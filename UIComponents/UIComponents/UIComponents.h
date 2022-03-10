@@ -6,7 +6,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <Utilities/Utilities.h>
 #import <UIKit/UIKit.h>
 
 //! Project version number for UIComponents.

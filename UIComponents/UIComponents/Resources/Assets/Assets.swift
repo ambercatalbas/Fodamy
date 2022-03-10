@@ -56,8 +56,8 @@ public enum Asset {
     public static let imgLogoFodamy = ImageAsset(name: "img_logo_fodamy")
     public static let imgIntro1 = ImageAsset(name: "img_ıntro_1")
     public static let imgIntro2 = ImageAsset(name: "img_ıntro_2")
-    public static let imgIntro31 = ImageAsset(name: "img_ıntro_3-1")
     public static let imgIntro3 = ImageAsset(name: "img_ıntro_3")
+    public static let imgIntro4 = ImageAsset(name: "img_ıntro_4")
   }
 }
 // swiftlint:enable identifier_name line_length nesting type_body_length type_name
