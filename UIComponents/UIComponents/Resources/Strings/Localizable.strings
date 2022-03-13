@@ -14,3 +14,19 @@
 "Intro.thirdTitle" = "Add new recipe.";
 "Intro.fourthTitle" = "Share recipes with others.";
 "Intro.descriptionText" = "Fodamy is the best place to find your favorite recipes in all around the world.";
+
+// MARK: - Login
+"LoginViewController.title" = "Giriş Yap";
+"LoginViewController.bottomText" = "Hesabın mı yok?";
+"LoginViewController.forgotPassword" = "Şifrenizi mi unuttunuz?";
+
+// MARK: - Register
+"RegisterViewController.title" = "Üye Ol";
+"RegisterViewController.bottomText" = "Hesabın mı var?";
+
+
+// MARK: - Placeholder
+
+"Placeholder.username" = "Kullanıcı Adı";
+"Placeholder.email" = "E-mail Adresi";
+"Placeholder.password" = "Şifre";
