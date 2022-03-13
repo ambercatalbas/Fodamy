@@ -15,6 +15,7 @@ final class HomeViewController: BaseViewController<HomeViewModel> {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         view.addSubview(pushLoginButton)
         pushLoginButton.centerXToSuperview()
         pushLoginButton.centerYToSuperview()

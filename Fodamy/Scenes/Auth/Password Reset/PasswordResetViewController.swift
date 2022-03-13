@@ -29,6 +29,7 @@ final class PasswordResetViewController: BaseViewController<PasswordResetViewMod
     }
     
 }
+
 // MARK: - UILayout
 extension PasswordResetViewController {
     
@@ -39,7 +40,9 @@ extension PasswordResetViewController {
     private func addTitleLabel() {
         view.addSubview(titleLabel)
         titleLabel.topToSuperview(usingSafeArea: true).constant = 50
-        titleLabel.centerXToSuperview()    }
+        titleLabel.centerXToSuperview()
+        
+    }
     
     private func addStackView() {
         view.addSubview(stackView)
@@ -49,7 +52,9 @@ extension PasswordResetViewController {
         stackView.addArrangedSubview(emailTextField)
         stackView.addArrangedSubview(resetButton)
     }
+    
 }
+
 // MARK: - Configure and Set Localize
 extension PasswordResetViewController {
     
