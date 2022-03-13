@@ -11,8 +11,14 @@ protocol HomeViewDataSource {}
 
 protocol HomeViewEventSource {}
 
-protocol HomeViewProtocol: HomeViewDataSource, HomeViewEventSource {}
+protocol HomeViewProtocol: HomeViewDataSource, HomeViewEventSource {
+    func showLogin()
+
+}
 
 final class HomeViewModel: BaseViewModel<HomeRouter>, HomeViewProtocol {
+    func showLogin() {
+        router.presentLogin()
+    }
     
 }

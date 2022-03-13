@@ -6,3 +6,7 @@
 //
 
 import Foundation
+
+public extension Notification.Name {
+    static let reloadDetailView = Notification.Name("reloadDetailView")
+}

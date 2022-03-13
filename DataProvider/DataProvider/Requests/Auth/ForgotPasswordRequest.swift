@@ -5,15 +5,17 @@
 //  Created by AMBER ÇATALBAŞ on 14.03.2022.
 //
 
-public struct ForgotPasswordRequest: RequestProtocol {
+public struct ForgotPasswordRequest: APIDecodableResponseRequest {
     
-    public typealias ResponseType = <#T##Type###>
+    public typealias ResponseType = Auth
     
-    public var path: String = <#T##Type###>
-    public var method: RequestMethod = <#T##Type###>
+    public var path: String = "auth/forgot"
+    public var method: RequestMethod = .post
     public var parameters: RequestParameters = [:]
     public var headers: RequestHeaders = [:]
     
-    public init() {}
+    public init(email: String) {
+        parameters["email"] = email
+    }
     
 }

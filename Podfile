@@ -4,6 +4,7 @@
 workspace 'Fodamy'
 
 target 'Fodamy' do
+  use_frameworks! :linkage => :static
 
  project 'Fodamy.xcodeproj'
 
@@ -53,7 +54,7 @@ target 'DataProvider' do
 end
 
 target 'UIComponents' do
-  
+  use_frameworks! :linkage => :static
   project 'UIComponents/UIComponents.xcodeproj'
   
   # Pods for UIComponents
@@ -63,7 +64,7 @@ target 'UIComponents' do
   pod 'SwiftGen', '~> 6.5'
   pod 'MobilliumBuilders', '~> 1.4'
   pod 'Segmentio', '~> 4.1'
-  pod 'Kingfisher', :git => 'https://github.com/onevcat/Kingfisher.git', :branch => 'version6-xcode13'
+  pod 'Kingfisher', '~> 6.3.1'
   pod 'SwiftEntryKit', '~> 1.2'
   
   target 'UIComponentsTests' do

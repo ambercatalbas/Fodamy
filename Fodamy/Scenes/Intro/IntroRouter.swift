@@ -6,5 +6,5 @@
 //
 
 final class IntroRouter: Router, IntroRouter.Routes {
-    typealias Routes = LoginRoute
+    typealias Routes = MainTabBarRoute
 }

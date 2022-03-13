@@ -5,15 +5,18 @@
 //  Created by AMBER ÇATALBAŞ on 13.03.2022.
 //
 
-public struct LoginRequest: RequestProtocol {
+public struct LoginRequest: APIDecodableResponseRequest {
     
-    public typealias ResponseType = <#T##Type###>
-    
-    public var path: String = <#T##Type###>
-    public var method: RequestMethod = <#T##Type###>
+    public typealias ResponseType = Auth
+
+    public var path: String = "auth/login"
+    public var method: RequestMethod = .post
     public var parameters: RequestParameters = [:]
     public var headers: RequestHeaders = [:]
     
-    public init() {}
+    public init(username: String, password: String) {
+        parameters["username"] = username
+        parameters["password"] = password
+    }
     
 }

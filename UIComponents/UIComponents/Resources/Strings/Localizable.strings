@@ -15,18 +15,33 @@
 "Intro.fourthTitle" = "Share recipes with others.";
 "Intro.descriptionText" = "Fodamy is the best place to find your favorite recipes in all around the world.";
 
-// MARK: - Login
-"LoginViewController.title" = "Giriş Yap";
-"LoginViewController.bottomText" = "Hesabın mı yok?";
-"LoginViewController.forgotPassword" = "Şifrenizi mi unuttunuz?";
-
 // MARK: - Register
 "RegisterViewController.title" = "Üye Ol";
 "RegisterViewController.bottomText" = "Hesabın mı var?";
+"RegisterViewController.bottomRedText" = "Giriş Yap";
 
+// MARK: - Login
+"LoginViewController.title" = "Giriş Yap";
+"LoginViewController.bottomBlackText" = "Hesabın mı yok?";
+"LoginViewController.bottomRedText" = "Üye Ol";
+"LoginViewController.forgotPassword" = "Şifrenizi mi unuttunuz?";
+
+// MARK: - PasswordReset
+"PasswordResetController.title" = "Şifre Sıfırlama";
+"PasswordResetController.reset" = "Sıfırla";
 
 // MARK: - Placeholder
-
 "Placeholder.username" = "Kullanıcı Adı";
 "Placeholder.email" = "E-mail Adresi";
 "Placeholder.password" = "Şifre";
+
+// MARK: - Error
+"Error.empty" = "%@ alanı boş olamaz.";
+"Error.refreshFromTop" = "Lütfen ekranı yukarıdan aşağıya kaydırarak yenileyiniz.";
+"Error.emptyFields" = "Lütfen boş alanları doldurunuz.";
+"Error.checkInformations" = "Lütfen bilgilerinizi kontrol ediniz.";
+
+// MARK: - Keys
+"Key.username" = "Username";
+"Key.email" = "E-posta";
+"Key.comment" = "Yorum";
