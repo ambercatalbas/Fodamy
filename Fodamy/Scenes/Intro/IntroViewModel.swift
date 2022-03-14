@@ -24,7 +24,7 @@ final class IntroViewModel: BaseViewModel<IntroRouter>, IntroViewProtocol {
     func didFinishIntro() {
         DefaultsKey.isIntroCompleted.value = true
         //        change after  tabbar route
-        router.placeOnWindowLogin()
+        router.placeOnWindowMainTabBar()
         
     }
     

@@ -5,4 +5,7 @@
 //  Created by AMBER ÇATALBAŞ on 10.03.2022.
 //
 
-final class LoginRouter: Router {}
+final class LoginRouter: Router, LoginRouter.Routes {
+    typealias Routes = RegisterRoute & PasswordResetRoute
+}
+ 

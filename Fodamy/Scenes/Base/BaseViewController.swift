@@ -29,22 +29,13 @@ class BaseViewController<V: BaseViewModelProtocol>: UIViewController {
       
     }
     private func subscribeToast() {
-        
-//        viewModel.showFailureWarningToast = { text in
-//            ToastPresenter.showWarningToast(text: text, entryBackground: .appRed)
-//        }
-//        viewModel.showSuccesWarningToast = {  text in
-//            ToastPresenter.showWarningToast(text: text, entryBackground: .green)
-//        }
-        
+        viewModel.showWarningToast = { text in
+            ToastPresenter.showWarningToast(text: text)
+        }
     }
     
-    func showFailureWarningToast(message: String) {
-//        ToastPresenter.showWarningToast(text: message, entryBackground: .appRed)
-    }
-    
-    func showSuccesWarningToast(message: String) {
-//        ToastPresenter.showWarningToast(text: message, entryBackground: .appGreen)
+    func showWarningToast(message: String) {
+        ToastPresenter.showWarningToast(text: message)
     }
     
     #if DEBUG

@@ -1,22 +1,20 @@
 //
-//  MainNavigationController.swift
+//  TransparentNavigationController.swift
 //  Fodamy
 //
-//  Created by AMBER ÇATALBAŞ on 9.03.2022.
+//  Created by AMBER ÇATALBAŞ on 13.03.2022.
 //
 
 import UIKit
+import Foundation
 import MobilliumBuilders
 
-class MainNavigationController: UINavigationController {
-    
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
-    }
+class TransparentNavigationController: UINavigationController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureContents()
+        makeTransparentBackground()
     }
     
     private func configureContents() {
@@ -26,15 +24,15 @@ class MainNavigationController: UINavigationController {
             .withAlignmentRectInsets(.init(top: 0, left: 0, bottom: -2, right: 0))
         let titleTextAttributes = AttributedStringDictionaryBuilder()
             .font(.font(.nunitoExtraBold, size: .medium))
-            .foregroundColor(.appWhite)
+            .foregroundColor(.appCinder)
             .build()
-        navigationBar.barTintColor = .appRed
+        navigationBar.barTintColor = .clear
         navigationBar.shadowImage = UIImage()
-        navigationBar.tintColor = .appWhite
+        navigationBar.tintColor = .appCinder
         navigationBar.titleTextAttributes = titleTextAttributes
         UIBarButtonItem.appearance().setTitleTextAttributes(AttributedStringDictionaryBuilder()
                                                                 .font(.font(.nunitoSemiBold, size: .large))
-                                                                .foregroundColor(.appWhite)
+                                                                .foregroundColor(.appCinder)
                                                                 .build(),
                                                             for: .normal)
 
@@ -45,7 +43,7 @@ class MainNavigationController: UINavigationController {
             let appearance = UINavigationBarAppearance()
             appearance.configureWithOpaqueBackground()
             appearance.shadowColor = .clear
-            appearance.backgroundColor = .appRed
+            appearance.backgroundColor = .clear
             appearance.titleTextAttributes = titleTextAttributes
             appearance.setBackIndicatorImage(backImage, transitionMaskImage: backImage)
             navigationBar.standardAppearance = appearance
@@ -53,6 +51,13 @@ class MainNavigationController: UINavigationController {
             navigationBar.compactAppearance = appearance
         }
         navigationBar.backItem?.backBarButtonItem?.setTitlePositionAdjustment(.init(horizontal: 0, vertical: -13), for: .default)
+    }
+    
+    private func makeTransparentBackground() {
+        navigationBar.shadowImage = UIImage()
+        navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationBar.isTranslucent = true
+        view.backgroundColor = .clear
     }
     
     #if DEBUG
