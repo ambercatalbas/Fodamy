@@ -44,6 +44,7 @@ final class LoginViewController: BaseViewController<LoginViewModel> {
         configureContents()
         setLocalize()
     }
+    
 }
 
 // MARK: - UILayout
@@ -92,8 +93,10 @@ extension LoginViewController {
     }
     
 }
+
 // MARK: - Configure and setLocalize
 extension LoginViewController {
+    
     private func configureContents() {
         view.backgroundColor = .white
         usernameTextField.autocapitalizationType = .none
@@ -106,14 +109,15 @@ extension LoginViewController {
         configureCancelRightBarButton()
       
     }
+    
     private func setLocalize() {
-        titleLabel.text = Strings.LoginViewController.title
-        usernameTextField.title = Strings.Placeholder.username
-        passwordTextField.title = Strings.Placeholder.password
-        loginButton.setTitle(Strings.LoginViewController.title, for: .normal)
-        forgotPasswordButton.setTitle(Strings.LoginViewController.forgotPassword, for: .normal)
-        registerScreenButton.setTitle(Strings.LoginViewController.bottomRedText, for: .normal)
-        bottomLabel.text = Strings.LoginViewController.bottomBlackText
+        titleLabel.text = L10n.LoginViewController.title
+        usernameTextField.title = L10n.Placeholder.username
+        passwordTextField.title = L10n.Placeholder.password
+        loginButton.setTitle(L10n.LoginViewController.title, for: .normal)
+        forgotPasswordButton.setTitle(L10n.LoginViewController.forgotPassword, for: .normal)
+        registerScreenButton.setTitle(L10n.LoginViewController.bottomRedText, for: .normal)
+        bottomLabel.text = L10n.LoginViewController.bottomBlackText
     }
     
     private func configureCancelRightBarButton() {
@@ -135,10 +139,11 @@ extension LoginViewController {
     
     @objc
     private func loginButtonTapped() {
+        
         view.endEditing(true)
         guard let userName = usernameTextField.text,
               let password = passwordTextField.text else {
-            showWarningToast(message: Strings.Error.emptyFields)
+            showWarningToast(message: L10n.Error.emptyFields)
             return
         }
         let validation = Validation()

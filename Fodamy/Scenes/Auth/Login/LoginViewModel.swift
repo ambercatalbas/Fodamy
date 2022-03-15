@@ -22,6 +22,7 @@ protocol LoginViewProtocol: LoginViewDataSource, LoginViewEventSource {
 }
 
 final class LoginViewModel: BaseViewModel<LoginRouter>, LoginViewProtocol {
+    
     let keychain = KeychainSwift()
 
     func showRegisterScene() {
@@ -57,7 +58,7 @@ extension LoginViewModel {
                 self.postNotification()
                 self.router.close()
             case .failure(let error):
-                self.showWarningToast?("\(error.localizedDescription) \(Strings.Error.checkInformations)")
+                self.showWarningToast?("\(error.localizedDescription) \(L10n.Error.checkInformations)")
             }
         }
     }
