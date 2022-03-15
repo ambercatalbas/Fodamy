@@ -38,9 +38,9 @@ final class IntroViewModel: BaseViewModel<IntroRouter>, IntroViewProtocol {
     }
     
     private let cellItems: [IntroCellProtocol] = [
-        IntroCellModel(image: .imgIntro1, titleText: Strings.Intro.firstTitle, descriptionText: Strings.Intro.descriptionText),
-        IntroCellModel(image: .imgIntro2, titleText: Strings.Intro.secondTitle, descriptionText: Strings.Intro.descriptionText),
-        IntroCellModel(image: .imgIntro3, titleText: Strings.Intro.thirdTitle, descriptionText: Strings.Intro.descriptionText),
-        IntroCellModel(image: .imgIntro4, titleText: Strings.Intro.fourthTitle, descriptionText: Strings.Intro.descriptionText)]
+        IntroCellModel(image: .imgIntro1, titleText: L10n.Intro.firstTitle, descriptionText: L10n.Intro.descriptionText),
+        IntroCellModel(image: .imgIntro2, titleText: L10n.Intro.secondTitle, descriptionText: L10n.Intro.descriptionText),
+        IntroCellModel(image: .imgIntro3, titleText: L10n.Intro.thirdTitle, descriptionText: L10n.Intro.descriptionText),
+        IntroCellModel(image: .imgIntro4, titleText: L10n.Intro.fourthTitle, descriptionText: L10n.Intro.descriptionText)]
     
 }

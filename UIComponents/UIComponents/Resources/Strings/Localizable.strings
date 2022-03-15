@@ -26,6 +26,14 @@
 "LoginViewController.bottomRedText" = "Üye Ol";
 "LoginViewController.forgotPassword" = "Şifrenizi mi unuttunuz?";
 
+// MARK: - Home
+"Home.editorChoiceRecipes" = "EDİTÖR SEÇİMİ";
+"Home.lastAddedRecipes" = "SON EKLENENLER";
+"Home.recipeCommnetAndLikeCount" = "%@ Yorum %@ Beğeni";
+"Home.userRecipeAndFollowerCount" = "%@ Tarif %@ Takipçi";
+
+
+
 // MARK: - PasswordReset
 "PasswordResetController.title" = "Şifre Sıfırlama";
 "PasswordResetController.reset" = "Sıfırla";

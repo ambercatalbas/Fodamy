@@ -32,10 +32,10 @@ extension RegisterViewModel {
             guard let self = self else { return }
             self.hideLoading?()
             switch result {
-            case .success(let response):
+            case .success:
                 self.router.close()
             case .failure(let error):
-                self.showWarningToast?("\(error.localizedDescription) \(Strings.Error.checkInformations)")
+                self.showWarningToast?("\(error.localizedDescription) \(L10n.Error.checkInformations)")
             }
         }
     }

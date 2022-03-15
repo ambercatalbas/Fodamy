@@ -67,9 +67,9 @@ extension PasswordResetViewController {
     }
     
     private func setLocalize() {
-        titleLabel.text = Strings.PasswordResetController.title
-        emailTextField.title = Strings.Placeholder.email
-        resetButton.setTitle(Strings.PasswordResetController.reset, for: .normal)
+        titleLabel.text = L10n.PasswordResetController.title
+        emailTextField.title = L10n.Placeholder.email
+        resetButton.setTitle(L10n.PasswordResetController.reset, for: .normal)
     }
     
 }
@@ -80,7 +80,7 @@ extension PasswordResetViewController {
     @objc
     private func resetButtonTapped() {
         guard let email = emailTextField.text, !email.isEmpty else {
-            showWarningToast(message: Strings.Error.empty(Strings.Key.email))
+            showWarningToast(message: L10n.Error.empty(L10n.Key.email))
             return
         }
         let validation = Validation()

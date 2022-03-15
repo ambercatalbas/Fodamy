@@ -8,22 +8,56 @@
 import UIKit
 import MobilliumBuilders
 import TinyConstraints
+import Segmentio
 
 final class HomeViewController: BaseViewController<HomeViewModel> {
     
-    private let pushLoginButton = ButtonFactory.createPrimaryButton(style: .large)
+    private let logoView = LogoView()
+    private let segmentView = Segmentio()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        addSubViews()
+        configureContents()
+        setLocalize()
         
-        view.addSubview(pushLoginButton)
-        pushLoginButton.centerXToSuperview()
-        pushLoginButton.centerYToSuperview()
-        pushLoginButton.setTitle("LoginScreen", for: .normal)
-        pushLoginButton.addTarget(self, action: #selector(pushLogin), for: .touchUpInside)
     }
-    @objc
-    private func pushLogin() {
-        viewModel.showLogin()
+    
+}
+
+// MARK: - UILayout
+extension HomeViewController {
+    
+    private func addSubViews() {
+        addSegmentView()
     }
+    
+    private func addSegmentView() {
+        view.addSubview(segmentView)
+        segmentView.edgesToSuperview(excluding: .bottom, usingSafeArea: true)
+        segmentView.height(46)
+    }
+    
+}
+
+// MARK: - Configure and Set Localize
+extension HomeViewController {
+    
+    private func configureContents() {
+        navigationItem.titleView = logoView
+        segmentView.setup(content: [SegmentioItem(title: viewModel.segmentedControlTitles[0], image: nil),
+                                    SegmentioItem(title: viewModel.segmentedControlTitles[1], image: nil)], style: .onlyLabel, options: .options())
+        segmentView.selectedSegmentioIndex = 0
+    }
+    
+    private func setLocalize() {
+        
+    }
+    
+}
+
+// MARK: - Actions
+extension HomeViewController {
+    
+    
 }

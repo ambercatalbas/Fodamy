@@ -7,18 +7,18 @@
 
 import Foundation
 
-protocol HomeViewDataSource {}
+protocol HomeViewDataSource {
+    var segmentedControlTitles: [String] { get }
+}
 
 protocol HomeViewEventSource {}
 
 protocol HomeViewProtocol: HomeViewDataSource, HomeViewEventSource {
-    func showLogin()
 
 }
 
 final class HomeViewModel: BaseViewModel<HomeRouter>, HomeViewProtocol {
-    func showLogin() {
-        router.presentLogin()
-    }
-    
+    var segmentedControlTitles: [String] = [L10n.Home.editorChoiceRecipes,
+                                            L10n.Home.lastAddedRecipes]
+   
 }

@@ -9,81 +9,96 @@ import Foundation
 
 // swiftlint:disable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:disable nesting type_body_length type_name vertical_whitespace_opening_braces
-public enum Strings {
+public enum L10n {
 
   public enum Error {
     /// Lütfen bilgilerinizi kontrol ediniz.
-    public static let checkInformations = Strings.tr("Localizable", "Error.checkInformations")
+    public static let checkInformations = L10n.tr("Localizable", "Error.checkInformations")
     /// %@ alanı boş olamaz.
     public static func empty(_ p1: Any) -> String {
-      return Strings.tr("Localizable", "Error.empty", String(describing: p1))
+      return L10n.tr("Localizable", "Error.empty", String(describing: p1))
     }
     /// Lütfen boş alanları doldurunuz.
-    public static let emptyFields = Strings.tr("Localizable", "Error.emptyFields")
+    public static let emptyFields = L10n.tr("Localizable", "Error.emptyFields")
     /// Lütfen ekranı yukarıdan aşağıya kaydırarak yenileyiniz.
-    public static let refreshFromTop = Strings.tr("Localizable", "Error.refreshFromTop")
+    public static let refreshFromTop = L10n.tr("Localizable", "Error.refreshFromTop")
+  }
+
+  public enum Home {
+    /// EDİTÖR SEÇİMİ
+    public static let editorChoiceRecipes = L10n.tr("Localizable", "Home.editorChoiceRecipes")
+    /// SON EKLENENLER
+    public static let lastAddedRecipes = L10n.tr("Localizable", "Home.lastAddedRecipes")
+    /// %@ Yorum %@ Beğeni
+    public static func recipeCommnetAndLikeCount(_ p1: Any, _ p2: Any) -> String {
+      return L10n.tr("Localizable", "Home.recipeCommnetAndLikeCount", String(describing: p1), String(describing: p2))
+    }
+    /// %@ Tarif %@ Takipçi
+    public static func userRecipeAndFollowerCount(_ p1: Any, _ p2: Any) -> String {
+      return L10n.tr("Localizable", "Home.userRecipeAndFollowerCount", String(describing: p1), String(describing: p2))
+    }
   }
 
   public enum Intro {
     /// Fodamy is the best place to find your favorite recipes in all around the world.
-    public static let descriptionText = Strings.tr("Localizable", "Intro.descriptionText")
+    public static let descriptionText = L10n.tr("Localizable", "Intro.descriptionText")
     /// Welcome to Fodamy Network!
-    public static let firstTitle = Strings.tr("Localizable", "Intro.firstTitle")
+    public static let firstTitle = L10n.tr("Localizable", "Intro.firstTitle")
     /// Share recipes with others.
-    public static let fourthTitle = Strings.tr("Localizable", "Intro.fourthTitle")
+    public static let fourthTitle = L10n.tr("Localizable", "Intro.fourthTitle")
     /// İlerle
-    public static let next = Strings.tr("Localizable", "Intro.Next")
+    public static let next = L10n.tr("Localizable", "Intro.Next")
     /// Finding recipes were not that easy.
-    public static let secondTitle = Strings.tr("Localizable", "Intro.secondTitle")
+    public static let secondTitle = L10n.tr("Localizable", "Intro.secondTitle")
     /// Başla!
-    public static let start = Strings.tr("Localizable", "Intro.Start")
+    public static let start = L10n.tr("Localizable", "Intro.Start")
     /// Add new recipe.
-    public static let thirdTitle = Strings.tr("Localizable", "Intro.thirdTitle")
+    public static let thirdTitle = L10n.tr("Localizable", "Intro.thirdTitle")
   }
 
   public enum Key {
     /// Yorum
-    public static let comment = Strings.tr("Localizable", "Key.comment")
+    public static let comment = L10n.tr("Localizable", "Key.comment")
     /// E-posta
-    public static let email = Strings.tr("Localizable", "Key.email")
+    public static let email = L10n.tr("Localizable", "Key.email")
     /// Username
-    public static let username = Strings.tr("Localizable", "Key.username")
+    public static let username = L10n.tr("Localizable", "Key.username")
   }
 
   public enum LoginViewController {
     /// Hesabın mı yok?
-    public static let bottomBlackText = Strings.tr("Localizable", "LoginViewController.bottomBlackText")
+    public static let bottomBlackText = L10n.tr("Localizable", "LoginViewController.bottomBlackText")
     /// Üye Ol
-    public static let bottomRedText = Strings.tr("Localizable", "LoginViewController.bottomRedText")
+    public static let bottomRedText = L10n.tr("Localizable", "LoginViewController.bottomRedText")
     /// Şifrenizi mi unuttunuz?
-    public static let forgotPassword = Strings.tr("Localizable", "LoginViewController.forgotPassword")
+    public static let forgotPassword = L10n.tr("Localizable", "LoginViewController.forgotPassword")
     /// Giriş Yap
-    public static let title = Strings.tr("Localizable", "LoginViewController.title")
+    public static let title = L10n.tr("Localizable", "LoginViewController.title")
   }
 
   public enum PasswordResetController {
     /// Sıfırla
-    public static let reset = Strings.tr("Localizable", "PasswordResetController.reset")
+    public static let reset = L10n.tr("Localizable", "PasswordResetController.reset")
     /// Şifre Sıfırlama
-    public static let title = Strings.tr("Localizable", "PasswordResetController.title")
+    public static let title = L10n.tr("Localizable", "PasswordResetController.title")
   }
 
   public enum Placeholder {
     /// E-mail Adresi
-    public static let email = Strings.tr("Localizable", "Placeholder.email")
+    public static let email = L10n.tr("Localizable", "Placeholder.email")
     /// Şifre
-    public static let password = Strings.tr("Localizable", "Placeholder.password")
+    public static let password = L10n.tr("Localizable", "Placeholder.password")
     /// Kullanıcı Adı
-    public static let username = Strings.tr("Localizable", "Placeholder.username")
+    public static let username = L10n.tr("Localizable", "Placeholder.username")
   }
 
   public enum RegisterViewController {
     /// Giriş Yap
-    public static let bottomRedText = Strings.tr("Localizable", "RegisterViewController.bottomRedText")
+    public static let bottomRedText = L10n.tr("Localizable", "RegisterViewController.bottomRedText")
     /// Hesabın mı var?
-    public static let bottomText = Strings.tr("Localizable", "RegisterViewController.bottomText")
+    public static let bottomText = L10n.tr("Localizable", "RegisterViewController.bottomText")
     /// Üye Ol
-    public static let title = Strings.tr("Localizable", "RegisterViewController.title")
+    public static let title = L10n.tr("Localizable", "RegisterViewController.title")
   }
 }
 // swiftlint:enable explicit_type_interface function_parameter_count identifier_name line_length
@@ -91,7 +106,7 @@ public enum Strings {
 
 // MARK: - Implementation Details
 
-extension Strings {
+extension L10n {
   private static func tr(_ table: String, _ key: String, _ args: CVarArg...) -> String {
     let format = BundleToken.bundle.localizedString(forKey: key, value: nil, table: table)
     return String(format: format, locale: Locale.current, arguments: args)

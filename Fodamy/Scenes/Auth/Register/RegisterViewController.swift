@@ -102,13 +102,13 @@ extension RegisterViewController {
     }
     
     private func setLocalize() {
-        titleLabel.text = Strings.RegisterViewController.title
-        usernameTextField.title = Strings.Placeholder.username
-        emailTextField.title = Strings.Placeholder.email
-        passwordTextField.title = Strings.Placeholder.password
-        registerButton.setTitle(Strings.RegisterViewController.title, for: .normal)
-        bottomLabel.text = Strings.RegisterViewController.bottomText
-        loginScreenButton.setTitle(Strings.RegisterViewController.bottomRedText, for: .normal)
+        titleLabel.text = L10n.RegisterViewController.title
+        usernameTextField.title = L10n.Placeholder.username
+        emailTextField.title = L10n.Placeholder.email
+        passwordTextField.title = L10n.Placeholder.password
+        registerButton.setTitle(L10n.RegisterViewController.title, for: .normal)
+        bottomLabel.text = L10n.RegisterViewController.bottomText
+        loginScreenButton.setTitle(L10n.RegisterViewController.bottomRedText, for: .normal)
     }
     
 }
@@ -127,7 +127,7 @@ extension RegisterViewController {
         guard let userName = usernameTextField.text,
               let email = emailTextField.text,
               let password = passwordTextField.text else {
-            showWarningToast(message: Strings.Error.emptyFields)
+            showWarningToast(message: L10n.Error.emptyFields)
             return
         }
         let validation = Validation()

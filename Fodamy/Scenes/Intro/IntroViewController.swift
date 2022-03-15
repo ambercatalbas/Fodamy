@@ -91,7 +91,7 @@ extension IntroViewController {
     }
     
     private func setLocalize() {
-        nextButton.setTitle(Strings.Intro.next, for: .normal)
+        nextButton.setTitle(L10n.Intro.next, for: .normal)
     }
     
 }
@@ -137,9 +137,9 @@ extension IntroViewController {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if pageControl.currentPage == viewModel.numberOfItemsAt(section: 0) - 1 {
-            nextButton.setTitle(Strings.Intro.start, for: .normal)
+            nextButton.setTitle(L10n.Intro.start, for: .normal)
         } else {
-            nextButton.setTitle(Strings.Intro.next, for: .normal)
+            nextButton.setTitle(L10n.Intro.next, for: .normal)
         }
     }
 }
