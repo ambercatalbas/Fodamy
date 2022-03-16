@@ -12,6 +12,38 @@ final class FavoritesViewController: BaseViewController<FavoritesViewModel> {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "favorites"
+        addSubViews()
+        configureContents()
+        setLocalize()
+        
     }
+    
+}
+
+// MARK: - UILayout
+extension FavoritesViewController {
+    
+    private func addSubViews() {
+    }
+    
+
+}
+
+// MARK: - Configure and Set Localize
+extension FavoritesViewController {
+    
+    private func configureContents() {
+
+    }
+    
+    private func setLocalize() {
+        
+    }
+    
+}
+
+// MARK: - Actions
+extension FavoritesViewController {
+    
     
 }
