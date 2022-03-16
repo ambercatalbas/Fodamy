@@ -10,8 +10,12 @@ import MobilliumBuilders
 public class ButtonFactory {
     
     public enum Style {
+        
+        ///        height 60
         case large
+        ///        height 50
         case medium
+        ///        height 40
         case small
         
         var height: CGFloat {

@@ -24,6 +24,35 @@ public enum L10n {
     public static let refreshFromTop = L10n.tr("Localizable", "Error.refreshFromTop")
   }
 
+  public enum General {
+    /// Yorum Ekle
+    public static let addComment = L10n.tr("Localizable", "General.addComment")
+    /// Yorum
+    public static let comment = L10n.tr("Localizable", "General.comment")
+    /// Yorumlar
+    public static let comments = L10n.tr("Localizable", "General.comments")
+    /// Takip Et
+    public static let follow = L10n.tr("Localizable", "General.follow")
+    /// Takipçi
+    public static let follower = L10n.tr("Localizable", "General.follower")
+    /// Takip Ediliyor
+    public static let following = L10n.tr("Localizable", "General.following")
+    /// Vazgeç
+    public static let giveUp = L10n.tr("Localizable", "General.giveUp")
+    /// Beğeni
+    public static let like = L10n.tr("Localizable", "General.like")
+    /// Giriş Yap
+    public static let login = L10n.tr("Localizable", "General.login")
+    /// Tarif
+    public static let recipe = L10n.tr("Localizable", "General.recipe")
+    /// Malzemeler
+    public static let recipeIngredients = L10n.tr("Localizable", "General.recipeIngredients")
+    /// Yapılışı
+    public static let recipeSteps = L10n.tr("Localizable", "General.recipeSteps")
+    /// Üye Ol
+    public static let register = L10n.tr("Localizable", "General.register")
+  }
+
   public enum Home {
     /// EDİTÖR SEÇİMİ
     public static let editorChoiceRecipes = L10n.tr("Localizable", "Home.editorChoiceRecipes")
