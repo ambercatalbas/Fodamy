@@ -60,6 +60,7 @@ extension HomeViewController {
     }
     
     private func setLocalize() {
+        
         userView.set(viewModel: FoodCardViewModel(userId: 28,
                                            userImageUrl: "https://fodamy.mobillium.com/images/3c4f17ca-1e63-4236-ae08-1a5d5e3cd793.jpg",
                                            username: "ahmeti",
@@ -71,12 +72,6 @@ extension HomeViewController {
                                            likeCount: 3,
                                            commentCount: 1,
                                            isEditorChoice: true))
-//        userView.set(viewModel: UserCardViewModel(userId: 1,
-//                                                  userImageUrl: "https://fodamy.mobillium.com/images/454ea7c3-aefb-4c76-aee4-a140a71b5834.jpg",
-//                                                  username: "mrtçelebi",
-//                                                  isfollowing: false,
-//                                                  recipeCount: 22,
-//                                                  followingCount: 8))
         
     }
     

@@ -104,6 +104,7 @@ extension FoodCardView {
         userStackView.addArrangedSubview(nameLabel)
         userStackView.addArrangedSubview(countLabel)
     }
+    
     private func addLineView() {
         addSubview(lineView)
         lineView.leftToSuperview()
@@ -111,6 +112,7 @@ extension FoodCardView {
         lineView.topToBottom(of: userImageView).constant = 15
         lineView.height(1)
     }
+    
     private func addRecipeStackView() {
         addSubview(recipeStackView)
         recipeStackView.topToBottom(of: lineView).constant = 11.5
@@ -127,12 +129,14 @@ extension FoodCardView {
         recipeImageView.aspectRatio(1)
         recipeImageView.topToBottom(of: recipeStackView).constant = 10
     }
+    
     private func addRecipeCountLabel() {
         addSubview(recipeCountLabel)
         recipeCountLabel.topToBottom(of: recipeImageView).constant = 13
         recipeCountLabel.leftToSuperview().constant = 15
         recipeCountLabel.rightToSuperview().constant = -15
     }
+    
     private func addBadgeImageView() {
         addSubview(badgeImageView)
         badgeImageView.rightToSuperview().constant = -30
@@ -155,7 +159,6 @@ extension FoodCardView {
         categoryNameLabel.text = viewModel.recipeCategoryName
         recipeImageView.setImage(viewModel.recipeImageUrl)
         recipeCountLabel.text = viewModel.recipeCountText
-        
 
     }
  
