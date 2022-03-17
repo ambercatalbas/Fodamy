@@ -26,8 +26,8 @@ public extension UIColor {
       return Asset.Colors.appRed.color
   }
 
-  static var appSecondaryBackgroun: UIColor {
-      return Asset.Colors.appSecondaryBackgroun.color
+  static var appSecondaryBackground: UIColor {
+      return Asset.Colors.appSecondaryBackground.color
   }
 
   static var appWhite: UIColor {

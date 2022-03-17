@@ -9,13 +9,20 @@ import UIKit
 import MobilliumBuilders
 import TinyConstraints
 import Segmentio
+import KeychainSwift
 
 final class HomeViewController: BaseViewController<HomeViewModel> {
     
     private let logoView = LogoView()
     private let segmentView = Segmentio()
+        
+    private let pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
     
-    private let userView = FoodCardView()
+    private lazy var subViewControllers: [UIViewController] = {
+        return self.preparedViewControllers()
+    }()
+    
+    private let keychain = KeychainSwift()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,13 +39,8 @@ extension HomeViewController {
     
     private func addSubViews() {
         addSegmentView()
-        
-        view.addSubview(userView)
-        userView.topToBottom(of: segmentView).constant = 10
-        userView.leftToSuperview()
-        userView.rightToSuperview()
-        
-        
+        addPageViewController()
+
     }
     
     private func addSegmentView() {
@@ -47,6 +49,13 @@ extension HomeViewController {
         segmentView.height(46)
     }
     
+    private func addPageViewController() {
+        view.addSubview(pageViewController.view)
+        pageViewController.view.edgesToSuperview(excluding: .top, usingSafeArea: true)
+        pageViewController.view.topToBottom(of: segmentView)
+    }
+
+    
 }
 
 // MARK: - Configure and Set Localize
@@ -54,24 +63,23 @@ extension HomeViewController {
     
     private func configureContents() {
         navigationItem.titleView = logoView
+        view.backgroundColor = .appSecondaryBackground
         segmentView.setup(content: [SegmentioItem(title: viewModel.segmentedControlTitles[0], image: nil),
                                     SegmentioItem(title: viewModel.segmentedControlTitles[1], image: nil)], style: .onlyLabel, options: .options())
-        segmentView.selectedSegmentioIndex = 0
+        segmentView.selectedSegmentioIndex = viewModel.selectedSegmentIndex
+        definesPresentationContext = true
+        addChild(pageViewController)
+        pageViewController.didMove(toParent: self)
+        pageViewController.delegate = self
+        pageViewController.dataSource = self
+        pageViewController.setViewControllers([subViewControllers[viewModel.selectedSegmentIndex]],
+                                              direction: .forward,
+                                              animated: true,
+                                              completion: nil)
+
     }
     
     private func setLocalize() {
-        
-        userView.set(viewModel: FoodCardViewModel(userId: 28,
-                                           userImageUrl: "https://fodamy.mobillium.com/images/3c4f17ca-1e63-4236-ae08-1a5d5e3cd793.jpg",
-                                           username: "ahmeti",
-                                           followingCount: 1,
-                                           recipeCount: 2,
-                                           recipeTitle: "Tarhana Çorbası",
-                                           recipeCategoryName: "sıcak çorbalar",
-                                           recipeImageUrl: "https://fodamy.mobillium.com/images/60b0be39-5534-48eb-a8ec-3b8741380182.jpg",
-                                           likeCount: 3,
-                                           commentCount: 1,
-                                           isEditorChoice: true))
         
     }
     
@@ -80,5 +88,71 @@ extension HomeViewController {
 // MARK: - Actions
 extension HomeViewController {
     
+}
+// MARK: - Helper
+extension HomeViewController {
+    private func preparedViewControllers() -> [UIViewController] {
+        let editorChoiceRouter = RecipesRouter()
+        let editorChoiceViewModel = RecipesViewModel(router: editorChoiceRouter)
+        let editorChoiceViewController = RecipesViewController(viewModel: editorChoiceViewModel)
+        editorChoiceRouter.viewController = editorChoiceViewController
+        
+        let recentlyAddedRouter = RecipesRouter()
+        let recentlyAddedRecipesViewModel = RecipesViewModel(router: recentlyAddedRouter)
+        let recentlyAddedRecipesViewController = RecipesViewController(viewModel: recentlyAddedRecipesViewModel)
+        recentlyAddedRouter.viewController = recentlyAddedRecipesViewController
+        
+        return [
+            editorChoiceViewController,
+            recentlyAddedRecipesViewController
+        ]
+    }
     
+    private func setSegmentHandler() {
+        segmentView.valueDidChange = { [weak self] _, segmentIndex in
+            guard let self = self else { return }
+            var direction: UIPageViewController.NavigationDirection = .forward
+            if segmentIndex < self.viewModel.selectedSegmentIndex {
+                direction = .reverse
+            }
+            self.pageViewController.setViewControllers([self.subViewControllers[segmentIndex]], direction: direction, animated: true, completion: nil)
+            self.viewModel.selectedSegmentIndex = segmentIndex
+        }
+    }
+}
+
+// MARK: - UIPageViewController
+extension HomeViewController: UIPageViewControllerDelegate, UIPageViewControllerDataSource {
+    func presentationCount(for pageViewController: UIPageViewController) -> Int {
+        return subViewControllers.count
+    }
+    
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
+        let currentIndex = subViewControllers.firstIndex(of: viewController) ?? 0
+        if currentIndex <= 0 {
+            return nil
+        }
+        
+        return subViewControllers[currentIndex - 1]
+    }
+    
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
+        let currentIndex = subViewControllers.firstIndex(of: viewController) ?? 0
+        if currentIndex >= subViewControllers.count - 1 {
+            return nil
+        }
+        return subViewControllers[currentIndex + 1]
+    }
+    
+    func pageViewController(_ pageViewController: UIPageViewController,
+                            didFinishAnimating finished: Bool,
+                            previousViewControllers: [UIViewController],
+                            transitionCompleted completed: Bool) {
+        if completed {
+            if let currentViewController = pageViewController.viewControllers?.first,
+               let index = subViewControllers.firstIndex(of: currentViewController) {
+                segmentView.selectedSegmentioIndex = index
+            }
+        }
+    }
 }
