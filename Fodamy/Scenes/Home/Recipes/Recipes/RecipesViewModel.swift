@@ -26,6 +26,28 @@ final class RecipesViewModel: BaseViewModel<RecipesRouter>, RecipesViewProtocol 
         return cellItems[indexPath.row]
     }
     
-    private let cellItems: [RecipeCellProtocol] = []
+    private let cellItems: [RecipeCellProtocol] = [RecipeCellModel(userId: 28,
+                                                            userImageUrl: "https://fodamy.mobillium.com/images/3c4f17ca-1e63-4236-ae08-1a5d5e3cd793.jpg",
+                                                            username: "ahmeti",
+                                                            followingCount: 1,
+                                                            recipeCount: 2,
+                                                            recipeTitle: "Tarhana Çorbası",
+                                                            recipeCategoryName: "sıcak çorbalar",
+                                                            recipeImageUrl: "https://fodamy.mobillium.com/images/60b0be39-5534-48eb-a8ec-3b8741380182.jpg",
+                                                            likeCount: 3,
+                                                            commentCount: 1,
+                                                            isEditorChoice: true),
+                                                   RecipeCellModel(userId: 28,
+                                                                                                           userImageUrl: "https://fodamy.mobillium.com/images/3c4f17ca-1e63-4236-ae08-1a5d5e3cd793.jpg",
+                                                                                                           username: "ahmeti",
+                                                                                                           followingCount: 1,
+                                                                                                           recipeCount: 2,
+                                                                                                           recipeTitle: "Tarhana Çorbası",
+                                                                                                           recipeCategoryName: "sıcak çorbalar",
+                                                                                                           recipeImageUrl: "https://fodamy.mobillium.com/images/60b0be39-5534-48eb-a8ec-3b8741380182.jpg",
+                                                                                                           likeCount: 3,
+                                                                                                           commentCount: 1,
+                                                                                                           isEditorChoice: true)]
+    
     
 }

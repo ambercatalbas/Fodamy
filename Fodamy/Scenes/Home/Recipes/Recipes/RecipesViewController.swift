@@ -18,8 +18,46 @@ final class RecipesViewController: BaseViewController<RecipesViewModel> {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemTeal
+        addSubViews()
+        configureContents()
+        setLocalize()
+        
     }
+    
+}
+
+// MARK: - UILayout
+extension RecipesViewController {
+    
+    private func addSubViews() {
+        addCollectionView()
+    }
+    
+    private func addCollectionView() {
+        view.addSubview(collectionView)
+        collectionView.edgesToSuperview()
+    }
+
+}
+
+// MARK: - Configure and Set Localize
+extension RecipesViewController {
+    
+    private func configureContents() {
+        collectionView.backgroundColor = .appSecondaryBackground
+        collectionView.delegate = self
+        collectionView.dataSource = self
+    }
+    
+    private func setLocalize() {
+        
+    }
+    
+}
+
+// MARK: - Actions
+extension RecipesViewController {
+    
     
 }
 
@@ -27,7 +65,7 @@ final class RecipesViewController: BaseViewController<RecipesViewModel> {
 extension RecipesViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.numberOfItemsAt(section: section)
+        return  viewModel.numberOfItemsAt(section: section)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -44,11 +82,11 @@ extension RecipesViewController: UICollectionViewDataSource {
 extension RecipesViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return .zero
+        return UIEdgeInsets(top: 15, left: 0, bottom: 0, right: 0)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return .zero
+        return 15
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
@@ -57,7 +95,7 @@ extension RecipesViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = UIScreen.main.bounds.width
-        return CGSize(width: width - 30, height: width + 145 )
+        return CGSize(width: width, height: width + 145 )
     }
     
 }
