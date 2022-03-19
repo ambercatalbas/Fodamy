@@ -12,8 +12,9 @@ final class RecipeDetailViewController: BaseViewController<RecipeDetailViewModel
     
     private let infoView = InfoCardView()
     private let ingredientsView = IngredientsView()
-    private let stepsView = StepsView()
-
+//    private let stepsView = StepsView()
+    private let commentView = CommentView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemTeal
@@ -39,7 +40,7 @@ extension RecipeDetailViewController {
     
     private func addSubViews() {
         view.addSubview(infoView)
-        infoView.topToSuperview().constant = 20
+        infoView.topToSuperview().constant = 100
         infoView.leftToSuperview()
         infoView.rightToSuperview()
         infoView.set(viewModel: InfoCardViewModel(recipeName: viewModel.recipe.title,
@@ -53,11 +54,16 @@ extension RecipeDetailViewController {
         ingredientsView.rightToSuperview()
         ingredientsView.set(viewModel: IngredientsViewModel(ingredients: viewModel.recipe.ingredients, numberOfPerson: viewModel.recipe.numberOfPerson.text))
         
-        view.addSubview(stepsView)
-        stepsView.topToBottom(of: ingredientsView).constant = 10
-        stepsView.leftToSuperview()
-        stepsView.rightToSuperview()
-        stepsView.set(viewModel: StepsViewModel(directions: viewModel.recipe.directions, timeOfRecipe: viewModel.recipe.timeOfRecipe.text))
+//        view.addSubview(stepsView)
+//        stepsView.topToBottom(of: ingredientsView).constant = 10
+//        stepsView.leftToSuperview()
+//        stepsView.rightToSuperview()
+//        stepsView.set(viewModel: StepsViewModel(directions: viewModel.recipe.directions, timeOfRecipe: viewModel.recipe.timeOfRecipe.text))
+        view.addSubview(commentView)
+        commentView.topToBottom(of: ingredientsView).constant = 10
+        commentView.leftToSuperview()
+        commentView.rightToSuperview()
+        commentView.set(viewModel: CommentViewModel(comment: Comment(id: 1, text: "yediğim en güzel yemekti her gün yiylim bunu belki biraz ucuz olsa daha çok yerdim. lütfen indirim yediğim en güzel yemekti her gün yiylim bunu belki biraz ucuz olsa daha çok yerdim. lütfen indirim yediğim en güzel yemekti her gün yiylim bunu belki biraz ucuz olsa daha çok yerdim. lütfen indirim", difference: "beş gün önce", user: viewModel.recipe.user)))
         
     }
     
