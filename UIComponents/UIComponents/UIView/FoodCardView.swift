@@ -159,7 +159,7 @@ extension FoodCardView {
         nameLabel.text = recipe.user.username
         countLabel.text = userCountText
         titleLabel.text = recipe.title
-        categoryNameLabel.text = recipe.category?.name
+        categoryNameLabel.text = recipe.category.name
         recipeImageView.setImage(recipe.images?[0].url)
         recipeCountLabel.text = recipeCountText
         if recipe.isEditorChoice {

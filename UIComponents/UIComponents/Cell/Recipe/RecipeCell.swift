@@ -30,26 +30,7 @@ public class RecipeCell: UICollectionViewCell, ReusableView {
     
     public func set(viewModel: RecipeCellProtocol) {
         self.viewModel = viewModel
-        foodCard.set(viewModel: FoodCardViewModel(recipe: viewModel.recipe ?? Recipe(id: 0,
-                                                                 title: "",
-                                                                 isEditorChoice: false,
-                                                                 likeCount: 0,
-                                                                 commentCount: 0,
-                                                                 user: User(id: 0,
-                                                                            username: "",
-                                                                            isTopUserChoice: false,
-                                                                            followedCount: 0,
-                                                                            followingCount: 0,
-                                                                            recipeCount: 0,
-                                                                            isFollowing: false,
-                                                                            favoritesCount: 0,
-                                                                            likesCount: 0,
-                                                                            image: nil),
-                                                                 category: Category(id: 0,
-                                                                                    name: "",
-                                                                                    language: "",
-                                                                                    image: nil),
-                                                                 images: nil)))
+        foodCard.set(viewModel: FoodCardViewModel(recipe: viewModel.recipe))
 
     }
     

@@ -13,13 +13,20 @@ protocol RecipeDetailViewDataSource {
 
 protocol RecipeDetailViewEventSource {}
 
-protocol RecipeDetailViewProtocol: RecipeDetailViewDataSource, RecipeDetailViewEventSource {}
+protocol RecipeDetailViewProtocol: RecipeDetailViewDataSource, RecipeDetailViewEventSource {
+    func showInfo()
+}
 
 final class RecipeDetailViewModel: BaseViewModel<RecipeDetailRouter>, RecipeDetailViewProtocol {
+    
     var recipe: Recipe
     
     init(recipe: Recipe, router: RecipeDetailRouter) {
         self.recipe = recipe
         super.init(router: router)
+    }
+    func showInfo() {
+//        toast
+        print("infobuttontapped")
     }
 }
