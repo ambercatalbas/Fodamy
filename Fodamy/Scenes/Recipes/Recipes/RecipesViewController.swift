@@ -21,9 +21,16 @@ final class RecipesViewController: BaseViewController<RecipesViewModel> {
         addSubViews()
         configureContents()
         setLocalize()
-        
+        viewModel.fetchRecipesListingType()
+        subscribeViewModelEvents()
     }
     
+    private func subscribeViewModelEvents() {
+        viewModel.didSuccessFetchRecipes = { [weak self] in
+            guard let self = self else { return }
+            self.collectionView.reloadData()
+        }
+    }
 }
 
 // MARK: - UILayout
@@ -63,7 +70,9 @@ extension RecipesViewController {
 
 // MARK: - UICollectionViewDataSource
 extension RecipesViewController: UICollectionViewDataSource {
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        viewModel.showRecipeDetailScreen(at: indexPath)
+    }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return  viewModel.numberOfItemsAt(section: section)
     }
@@ -82,7 +91,7 @@ extension RecipesViewController: UICollectionViewDataSource {
 extension RecipesViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 15, left: 0, bottom: 0, right: 0)
+        return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
@@ -100,3 +109,14 @@ extension RecipesViewController: UICollectionViewDelegateFlowLayout {
     
 }
 // swiftlint:enable line_length
+
+// MARK: - UIScrollViewDelegate
+extension RecipesViewController {
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let position = scrollView.contentOffset.y
+        if position > collectionView.contentSize.height - 100 - scrollView.frame.size.height && viewModel.isPagingEnabled && viewModel.isRequestEnabled {
+            viewModel.fetchMorePages()
+        }
+    }
+}
