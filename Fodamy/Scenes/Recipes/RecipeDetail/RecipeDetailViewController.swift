@@ -6,13 +6,89 @@
 //
 
 import UIKit
+import UIComponents
 
 final class RecipeDetailViewController: BaseViewController<RecipeDetailViewModel> {
+    
+    private let infoView = InfoCardView()
+    private let ingredientsView = IngredientsView()
+//    private let stepsView = StepsView()
+    private let commentView = CommentView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemTeal
         print(viewModel.recipe)
+        
+        
+        addSubViews()
+        configureContents()
+        setLocalize()
+        setInfoButtonAction()
+        
+    }
+    private func setInfoButtonAction() {
+        infoView.infoButtonTapped = { [weak self] in
+            guard let self = self else { return }
+            self.infoButtonTapped()
+        }
+    }
+}
+
+// MARK: - UILayout
+extension RecipeDetailViewController {
+    
+    private func addSubViews() {
+        view.addSubview(infoView)
+        infoView.topToSuperview().constant = 100
+        infoView.leftToSuperview()
+        infoView.rightToSuperview()
+        infoView.set(viewModel: InfoCardViewModel(recipeName: viewModel.recipe.title,
+                                                  categoryName: viewModel.recipe.category.name,
+                                                  difference: viewModel.recipe.difference,
+                                                  commentCount: viewModel.recipe.commentCount,
+                                                  likeCount: viewModel.recipe.likeCount))
+        view.addSubview(ingredientsView)
+        ingredientsView.topToBottom(of: infoView).constant = 10
+        ingredientsView.leftToSuperview()
+        ingredientsView.rightToSuperview()
+        ingredientsView.set(viewModel: IngredientsViewModel(ingredients: viewModel.recipe.ingredients, numberOfPerson: viewModel.recipe.numberOfPerson.text))
+        
+//        view.addSubview(stepsView)
+//        stepsView.topToBottom(of: ingredientsView).constant = 10
+//        stepsView.leftToSuperview()
+//        stepsView.rightToSuperview()
+//        stepsView.set(viewModel: StepsViewModel(directions: viewModel.recipe.directions, timeOfRecipe: viewModel.recipe.timeOfRecipe.text))
+        view.addSubview(commentView)
+        commentView.topToBottom(of: ingredientsView).constant = 10
+        commentView.leftToSuperview()
+        commentView.rightToSuperview()
+        commentView.set(viewModel: CommentViewModel(comment: Comment(id: 1, text: "yediğim en güzel yemekti her gün yiylim bunu belki biraz ucuz olsa daha çok yerdim. lütfen indirim yediğim en güzel yemekti her gün yiylim bunu belki biraz ucuz olsa daha çok yerdim. lütfen indirim yediğim en güzel yemekti her gün yiylim bunu belki biraz ucuz olsa daha çok yerdim. lütfen indirim", difference: "beş gün önce", user: viewModel.recipe.user)))
+        
+    }
+    
+
+}
+
+// MARK: - Configure and Set Localize
+extension RecipeDetailViewController {
+    
+    private func configureContents() {
+
+    }
+    
+    private func setLocalize() {
+        
     }
     
 }
+
+// MARK: - Actions
+extension RecipeDetailViewController {
+    
+    @objc
+    private func infoButtonTapped() {
+        viewModel.showInfo()
+    }
+}
+
