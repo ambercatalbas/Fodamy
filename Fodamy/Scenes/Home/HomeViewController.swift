@@ -76,6 +76,7 @@ extension HomeViewController {
                                               direction: .forward,
                                               animated: true,
                                               completion: nil)
+        setSegmentHandler()
 
     }
     
@@ -93,12 +94,12 @@ extension HomeViewController {
 extension HomeViewController {
     private func preparedViewControllers() -> [UIViewController] {
         let editorChoiceRouter = RecipesRouter()
-        let editorChoiceViewModel = RecipesViewModel(router: editorChoiceRouter)
+        let editorChoiceViewModel = RecipesViewModel(recipesListingType: .editorChoiceRecipes, router: editorChoiceRouter)
         let editorChoiceViewController = RecipesViewController(viewModel: editorChoiceViewModel)
         editorChoiceRouter.viewController = editorChoiceViewController
         
         let recentlyAddedRouter = RecipesRouter()
-        let recentlyAddedRecipesViewModel = RecipesViewModel(router: recentlyAddedRouter)
+        let recentlyAddedRecipesViewModel = RecipesViewModel(recipesListingType: .recentlyAddedRecipes, router: recentlyAddedRouter)
         let recentlyAddedRecipesViewController = RecipesViewController(viewModel: recentlyAddedRecipesViewModel)
         recentlyAddedRouter.viewController = recentlyAddedRecipesViewController
         

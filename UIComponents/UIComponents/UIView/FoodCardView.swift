@@ -149,16 +149,24 @@ extension FoodCardView {
 
 // MARK: - Configure and Set Localize
 extension FoodCardView {
-
+    
     public func set(viewModel: FoodCardViewProtocol) {
         self.viewModel = viewModel
-        userImageView.setImage(viewModel.userImageUrl)
-        nameLabel.text = viewModel.username
-        countLabel.text = viewModel.userCountText
-        titleLabel.text = viewModel.recipeTitle
-        categoryNameLabel.text = viewModel.recipeCategoryName
-        recipeImageView.setImage(viewModel.recipeImageUrl)
-        recipeCountLabel.text = viewModel.recipeCountText
+        let recipe = viewModel.recipe
+        let userCountText = "\(viewModel.recipe.user.recipeCount) \(L10n.General.recipe) \(viewModel.recipe.user.followingCount) \(L10n.General.follower)"
+        let recipeCountText = "\(viewModel.recipe.commentCount) \(L10n.General.comment) \(recipe.likeCount) \(L10n.General.like)"
+        userImageView.setImage(recipe.user.image?.url)
+        nameLabel.text = recipe.user.username
+        countLabel.text = userCountText
+        titleLabel.text = recipe.title
+        categoryNameLabel.text = recipe.category?.name
+        recipeImageView.setImage(recipe.images?[0].url)
+        recipeCountLabel.text = recipeCountText
+        if recipe.isEditorChoice {
+            badgeImageView.isHidden = false
+        } else {
+            badgeImageView.isHidden = true
+        }
 
     }
  
