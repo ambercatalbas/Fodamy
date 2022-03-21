@@ -22,10 +22,13 @@ protocol RecipeDetailViewProtocol: RecipeDetailViewDataSource, RecipeDetailViewE
 final class RecipeDetailViewModel: BaseViewModel<RecipeDetailRouter>, RecipeDetailViewProtocol {
     var comment: Comment?
     var recipe: Recipe
-    
+    var imageSliderCellItems: [ImageSliderCellProtocol] = []
+
     init(recipe: Recipe, router: RecipeDetailRouter) {
         self.recipe = recipe
+        self.imageSliderCellItems = [ImageSliderCellModel(imageUrl: recipe.images?[0].url ?? "", isEditorChoice: recipe.isEditorChoice)]
         super.init(router: router)
+        
     }
     func showInfo() {
 //        toast

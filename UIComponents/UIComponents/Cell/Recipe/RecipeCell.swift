@@ -10,8 +10,10 @@ import DataProvider
 
 public class RecipeCell: UICollectionViewCell, ReusableView {
     
-    weak var viewModel: RecipeCellProtocol?
     private let foodCard = FoodCardView()
+
+    weak var viewModel: RecipeCellProtocol?
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         configureContents()

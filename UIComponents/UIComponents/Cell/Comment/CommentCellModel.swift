@@ -1,14 +1,14 @@
 //
-//  UserCardViewModel.swift
+//  CommentCellModel.swift
 //  UIComponents
 //
-//  Created by AMBER ÇATALBAŞ on 15.03.2022.
+//  Created by AMBER ÇATALBAŞ on 22.03.2022.
 //
 
 import Foundation
 
-public protocol UserCardViewDataSource: AnyObject {
-    var userId: Int? { get }
+public protocol CommentCellDataSource: AnyObject {
+    var userId: Int { get }
     var userImageUrl: String? { get }
     var username: String? { get }
     var userCountText: String? { get }
@@ -20,20 +20,20 @@ public protocol UserCardViewDataSource: AnyObject {
     var recipeCount: Int { get }
 }
 
-public protocol UserCardViewEventSource: AnyObject {
+public protocol CommentCellEventSource: AnyObject {
     
 }
 
-public protocol UserCardViewProtocol: UserCardViewDataSource, UserCardViewEventSource {
+public protocol CommentCellProtocol: CommentCellDataSource, CommentCellEventSource {
     
 }
 
-public final class UserCardViewModel: UserCardViewProtocol {
+public final class CommentCellModel: CommentCellProtocol {
     public var followButtonSetTitleColor: UIColor?
     public var followButtonBackgroundColor: UIColor?
     public var followButtonTitle: String?
     public var isFollowing: Bool?
-    public var userId: Int?
+    public var userId: Int
     public var userImageUrl: String?
     public var username: String?
     public var userCountText: String?
@@ -64,5 +64,4 @@ public final class UserCardViewModel: UserCardViewProtocol {
             self.followButtonBackgroundColor = .appWhite
         }
     }
-    
 }
