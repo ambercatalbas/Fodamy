@@ -43,6 +43,8 @@ public enum L10n {
     public static let like = L10n.tr("Localizable", "General.like")
     /// Giriş Yap
     public static let login = L10n.tr("Localizable", "General.login")
+    /// dk
+    public static let minute = L10n.tr("Localizable", "General.minute")
     /// Tarif
     public static let recipe = L10n.tr("Localizable", "General.recipe")
     /// Malzemeler
@@ -119,6 +121,11 @@ public enum L10n {
     public static let password = L10n.tr("Localizable", "Placeholder.password")
     /// Kullanıcı Adı
     public static let username = L10n.tr("Localizable", "Placeholder.username")
+  }
+
+  public enum RecipeDetail {
+    /// Henüz yorum yapılmamıştır.
+    public static let noComment = L10n.tr("Localizable", "RecipeDetail.noComment")
   }
 
   public enum RegisterViewController {

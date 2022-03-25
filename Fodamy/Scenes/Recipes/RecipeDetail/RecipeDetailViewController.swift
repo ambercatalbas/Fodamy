@@ -10,8 +10,7 @@ import UIComponents
 
 final class RecipeDetailViewController: BaseViewController<RecipeDetailViewModel> {
 
-    var imageSliderView = ImageSliderView(viewModel: ImageSliderViewModel(cellItems: [ImageSliderCellModel(imageUrl: "", isEditorChoice: false)]))
-    
+    private let imageSliderView = ImageSliderView()
     private let scrollView = UIScrollViewBuilder()
         .showsHorizontalScrollIndicator(false)
         .showsVerticalScrollIndicator(false)
@@ -53,6 +52,7 @@ final class RecipeDetailViewController: BaseViewController<RecipeDetailViewModel
         collectionView.backgroundColor = .appSecondaryBackground
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.register(CommentCell.self)
+        collectionView.register(EmptyCell.self)
         return collectionView
     }()
     
@@ -62,19 +62,22 @@ final class RecipeDetailViewController: BaseViewController<RecipeDetailViewModel
     private let commentButton = ButtonFactory.createPrimaryButton(style: .large)
     override func viewDidLoad() {
         super.viewDidLoad()
-      
-        configureContents()
+        viewModel.getRecipeComment()
+
         addSubViews()
         setLocalize()
-        setInfoButtonAction()
-        
+        subscribeViewModel()
+        configureContents()
+        subscribeViewModel()
     }
-    private func setInfoButtonAction() {
-        infoView.infoButtonTapped = { [weak self] in
-            guard let self = self else { return }
-            self.infoButtonTapped()
+    
+    private func subscribeViewModel() {
+        viewModel.reloadCommentData = { [weak self] in
+            self?.commentsCollectionView.reloadData()
         }
+
     }
+
 }
 
 // MARK: - UILayout
@@ -99,7 +102,6 @@ extension RecipeDetailViewController {
         contentStackView.addArrangedSubview(imageSliderView)
         contentStackView.setCustomSpacing(0, after: imageSliderView)
         contentStackView.addArrangedSubview(infoView)
-        contentStackView.setCustomSpacing(1, after: infoView)
         contentStackView.addArrangedSubview(userCardView)
         contentStackView.addArrangedSubview(ingredientsView)
         contentStackView.addArrangedSubview(stepsView)
@@ -134,21 +136,24 @@ extension RecipeDetailViewController {
 extension RecipeDetailViewController {
     
     private func configureContents() {
+        commentsCollectionView.dataSource = self
+        commentsCollectionView.delegate = self
+        
         view.backgroundColor = .appSecondaryBackground
-        imageSliderView = ImageSliderView(viewModel: ImageSliderViewModel(cellItems: [ImageSliderCellModel(imageUrl: viewModel.recipe.images?[0].url ?? "", isEditorChoice: viewModel.recipe.isEditorChoice)]))
+        imageSliderView.set(viewModel: ImageSliderViewModel(cellItems: viewModel.imageSliderCellItems))
         ingredientsView.set(viewModel: IngredientsViewModel(ingredients: viewModel.recipe.ingredients, numberOfPerson: viewModel.recipe.numberOfPerson.text))
         infoView.set(viewModel: InfoCardViewModel(recipeName: viewModel.recipe.title,
                                                   categoryName: viewModel.recipe.category.name,
                                                   difference: viewModel.recipe.difference,
                                                   commentCount: viewModel.recipe.commentCount,
                                                   likeCount: viewModel.recipe.likeCount))
-           stepsView.set(viewModel: StepsViewModel(directions: viewModel.recipe.directions, timeOfRecipe: viewModel.recipe.timeOfRecipe.text))
+        stepsView.set(viewModel: StepsViewModel(directions: viewModel.recipe.directions, timeOfRecipe: viewModel.recipe.timeOfRecipe.text))
         userCardView.set(viewModel: UserCardViewModel(userId: viewModel.recipe.user.id ?? 0,
                                                       userImageUrl: viewModel.recipe.user.image?.url,
                                                       username: viewModel.recipe.user.username,
                                                       isfollowing: viewModel.recipe.user.isFollowing,
                                                       recipeCount: viewModel.recipe.user.recipeCount,
-                                                      followingCount: viewModel.recipe.user.followingCount))
+                                                      followedCount: viewModel.recipe.user.followingCount))
     }
     
     private func setLocalize() {
@@ -170,3 +175,64 @@ extension RecipeDetailViewController {
     }
 }
 
+// MARK: - UICollectionViewDataSource
+extension RecipeDetailViewController: UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if viewModel.commentNumberOfItemsAt(section: section) == 0 {
+            return 1
+        } else if viewModel.commentNumberOfItemsAt(section: section) > 3 {
+            return 3
+        }
+        return viewModel.commentNumberOfItemsAt(section: section)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        if viewModel.commentNumberOfItemsAt(section: 0) == 0 {
+            let cell: EmptyCell = collectionView.dequeueReusableCell(for: indexPath)
+//            let cell: CommentCell = collectionView.dequeueReusableCell(for: indexPath)
+//            let cellItem = viewModel.commentCellItemAt(indexPath: indexPath)
+//            cell.set(viewModel: CommentCellModel(userId: 0, imageUrl: "", username: "", recipeCount: 0, followedCount: 0, differenceText: "", commentId: 0, commentText: "", isOwner: false, isFollowing: false))
+
+            return cell
+        }
+        
+        let cell: CommentCell = collectionView.dequeueReusableCell(for: indexPath)
+        let cellItem = viewModel.commentCellItemAt(indexPath: indexPath)
+        cell.set(with: cellItem)
+        
+//        cell.isMoreButtonHidden = true
+        return cell
+    }
+    
+}
+
+// MARK: - UICollectionViewDelegate
+extension RecipeDetailViewController: UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        viewModel.didSelectComment()
+    }
+}
+
+// swiftlint:disable line_length
+// MARK: - UICollectionViewDelegateFlowLayout
+extension RecipeDetailViewController: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        .zero
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        .zero
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: UIScreen.main.bounds.width, height: 195)
+    }
+    
+}

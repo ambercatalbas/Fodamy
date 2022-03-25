@@ -32,6 +32,8 @@
 "Home.recipeCommnetAndLikeCount" = "%@ Yorum %@ Beğeni";
 "Home.userRecipeAndFollowerCount" = "%@ Tarif %@ Takipçi";
 
+// MARK: RecipeDetail
+"RecipeDetail.noComment" = "Henüz yorum yapılmamıştır.";
 
 
 // MARK: - PasswordReset
@@ -69,3 +71,4 @@
 "General.login" = "Giriş Yap";
 "General.recipe" = "Tarif";
 "General.follower" = "Takipçi";
+"General.minute" = "dk";

@@ -27,25 +27,25 @@ public class ImageSliderView: UIView {
             pageControl.isHidden = pageControl.numberOfPages == 1
         }
     }
-    public var viewModel: ImageSliderViewProtocol
-//
-//    init(viewModel: ImageSliderViewProtocol) {
-//        self.viewModel = viewModel
-//
-//    }
+    weak var viewModel: ImageSliderViewProtocol? {
+        didSet {
+            collectionView.reloadData()
+            pageControl.numberOfPages = imageSliderData.count
+            pageControl.isHidden = pageControl.numberOfPages == 1
+        }
+    }
     
-   public init(viewModel: ImageSliderViewProtocol) {
-        self.viewModel = viewModel
-        super.init(frame: .zero)
-        addSubViews()
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         configureContents()
+        addSubViews()
     }
     
-    // swiftlint:disable fatal_error unavailable_function
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        configureContents()
+        addSubViews()
     }
-    // swiftlint:enable fatal_error unavailable_function
     
 }
 // MARK: - UILayout
@@ -99,13 +99,13 @@ extension ImageSliderView {
 extension ImageSliderView: UICollectionViewDataSource {
     
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.numberOfItemsAt(section: section)
+        return viewModel?.cellItems.count ?? 0
     }
     
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: ImageSliderCell = collectionView.dequeueReusableCell(for: indexPath)
-        let cellItem = viewModel.cellItemAt(indexPath: indexPath)
-        cell.set(viewModel: ImageSliderCellModel(imageUrl: cellItem.imageUrl ?? "", isEditorChoice: cellItem.isEditorChoice ?? false))
+        let cellItem = viewModel?.cellItems[indexPath.row]
+        cell.set(viewModel: cellItem!)
         return cell
     }
     

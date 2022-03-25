@@ -100,7 +100,4 @@ extension UserCardView {
     
 }
 
-// MARK: - Actions
-extension UserCardView {
-    
-}
+
