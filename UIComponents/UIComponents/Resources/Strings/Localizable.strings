@@ -44,6 +44,7 @@
 "Placeholder.username" = "Kullanıcı Adı";
 "Placeholder.email" = "E-mail Adresi";
 "Placeholder.password" = "Şifre";
+"Placeholder.comment" = "Bir şeyler yazın..";
 
 // MARK: - Error
 "Error.empty" = "%@ alanı boş olamaz.";
@@ -72,3 +73,7 @@
 "General.recipe" = "Tarif";
 "General.follower" = "Takipçi";
 "General.minute" = "dk";
+
+// MARK: - Action
+"Action.block" = "Block";
+"Action.loginWarning" = "Giriş yapmanız gereklidir.";

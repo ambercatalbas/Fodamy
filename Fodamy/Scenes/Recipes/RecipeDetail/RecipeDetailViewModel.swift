@@ -11,6 +11,7 @@ import KeychainSwift
 
 protocol RecipeDetailViewDataSource {
     var recipe: Recipe { get set }
+    var recipeDetail: RecipeDetail? { get }
     
     func commentNumberOfItemsAt(section: Int) -> Int
     func commentCellItemAt(indexPath: IndexPath) -> CommentCellProtocol
@@ -33,7 +34,7 @@ protocol RecipeDetailViewProtocol: RecipeDetailViewDataSource, RecipeDetailViewE
 }
 
 final class RecipeDetailViewModel: BaseViewModel<RecipeDetailRouter>, RecipeDetailViewProtocol {
-
+    var recipeDetail: RecipeDetail?
     var toggleIsLiked: VoidClosure?
     var toggleIsFollowing: VoidClosure?
     var reloadCommentData: VoidClosure?
@@ -69,7 +70,14 @@ final class RecipeDetailViewModel: BaseViewModel<RecipeDetailRouter>, RecipeDeta
 extension RecipeDetailViewModel {
     
     func likeButtonTapped() {
-print("likebutton")
+        guard keychain.get(Keychain.token) != nil else {
+            router.presentLoginWarningPopup(loginHandler: { [weak self] in
+                self?.router.presentLogin()
+            })
+            return
+        }
+        
+        recipeLikeRequest()
     }
     
     func followButtonTapped() {
@@ -92,6 +100,19 @@ print("likebutton")
 // MARK: - Network
 extension RecipeDetailViewModel {
     
+    func getRecipeDetail() {
+        dataProvider.request(for: GetRecipeDetailRequest(recipeId: recipe.id)) { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let recipeDetail):
+                self.recipeDetail = recipeDetail
+                self.reloadDetailData?()
+            case .failure(let error ):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
     func getRecipeComment() {
         let request = GetRecipeCommentsRequest(recipeId: recipe.id)
         dataProvider.request(for: request) { [weak self] result in
@@ -107,4 +128,27 @@ extension RecipeDetailViewModel {
         }
     }
 
+    private func recipeLikeRequest() {
+        let recipeId = recipe.id
+        let isLiked = recipeDetail?.isLiked ?? false
+        let request: RecipeLikeRequest
+        switch isLiked {
+        case true:
+            request = RecipeLikeRequest(recipeId: recipeId, likeType: .unlike)
+        case false:
+            request = RecipeLikeRequest(recipeId: recipeId, likeType: .like)
+        }
+        toggleIsLiked?()
+        dataProvider.request(for: request) { [weak self] (result) in
+            guard let self = self else { return }
+            switch result {
+            case .success(let response):
+                print(response.message)
+            case .failure(let error):
+                print(error.localizedDescription)
+                self.toggleIsLiked?()
+            }
+        }
+    }
+    
     }

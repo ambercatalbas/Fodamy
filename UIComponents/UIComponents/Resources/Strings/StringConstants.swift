@@ -11,6 +11,13 @@ import Foundation
 // swiftlint:disable nesting type_body_length type_name vertical_whitespace_opening_braces
 public enum L10n {
 
+  public enum Action {
+    /// Block
+    public static let block = L10n.tr("Localizable", "Action.block")
+    /// Giriş yapmanız gereklidir.
+    public static let loginWarning = L10n.tr("Localizable", "Action.loginWarning")
+  }
+
   public enum Error {
     /// Lütfen bilgilerinizi kontrol ediniz.
     public static let checkInformations = L10n.tr("Localizable", "Error.checkInformations")
@@ -115,6 +122,8 @@ public enum L10n {
   }
 
   public enum Placeholder {
+    /// Bir şeyler yazın..
+    public static let comment = L10n.tr("Localizable", "Placeholder.comment")
     /// E-mail Adresi
     public static let email = L10n.tr("Localizable", "Placeholder.email")
     /// Şifre
