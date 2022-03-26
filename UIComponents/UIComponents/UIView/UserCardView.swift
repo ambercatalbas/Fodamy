@@ -32,7 +32,8 @@ public class UserCardView: UIView {
     private let followButton = ButtonFactory.createPrimaryBorderedButton(style: .small)
     
     weak var viewModel: UserCardViewProtocol?
-    
+    public var followButtonTapped: VoidClosure?
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubViews()
@@ -96,8 +97,15 @@ extension UserCardView {
         followButton.setTitle(viewModel.followButtonTitle, for: .normal)
         followButton.setTitleColor(viewModel.followButtonSetTitleColor, for: .normal)
         followButton.backgroundColor = viewModel.followButtonBackgroundColor
+        followButton.addTarget(self, action: #selector(followButtonAction), for: .touchUpInside)
     }
     
 }
 
-
+// MARK: - Actions
+extension UserCardView {
+    @objc
+    private func followButtonAction() {
+        self.followButtonTapped?()
+    }
+}

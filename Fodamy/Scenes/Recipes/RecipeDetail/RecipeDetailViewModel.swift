@@ -6,12 +6,15 @@
 //
 
 import Foundation
+import UIComponents
+import KeychainSwift
 
 protocol RecipeDetailViewDataSource {
     var recipe: Recipe { get set }
     
     func commentNumberOfItemsAt(section: Int) -> Int
     func commentCellItemAt(indexPath: IndexPath) -> CommentCellProtocol
+    
 }
 
 protocol RecipeDetailViewEventSource {
@@ -22,17 +25,23 @@ protocol RecipeDetailViewEventSource {
 }
 
 protocol RecipeDetailViewProtocol: RecipeDetailViewDataSource, RecipeDetailViewEventSource {
-    func showInfo()
+    func likeButtonTapped()
+    func followButtonTapped()
+    func commentButtonTapped()
+    func didSelectComment()
+
 }
 
 final class RecipeDetailViewModel: BaseViewModel<RecipeDetailRouter>, RecipeDetailViewProtocol {
+
     var toggleIsLiked: VoidClosure?
     var toggleIsFollowing: VoidClosure?
     var reloadCommentData: VoidClosure?
     var reloadDetailData: VoidClosure?
     var recipe: Recipe
     var imageSliderCellItems: [ImageSliderCellProtocol] = []
-    
+    let keychain = KeychainSwift()
+
     init(recipe: Recipe, router: RecipeDetailRouter) {
         self.recipe = recipe
         super.init(router: router)
@@ -49,8 +58,35 @@ final class RecipeDetailViewModel: BaseViewModel<RecipeDetailRouter>, RecipeDeta
     
     var commentCellItems: [CommentCellProtocol] = []
     func showInfo() {
-   
+        recipe.images?.forEach({ image in
+            imageSliderCellItems.append(ImageSliderCellModel(imageUrl: image.url ?? "", isEditorChoice: recipe.isEditorChoice))
+        })
     }
+    
+}
+
+// MARK: - Actions
+extension RecipeDetailViewModel {
+    
+    func likeButtonTapped() {
+print("likebutton")
+    }
+    
+    func followButtonTapped() {
+        print("followButtonTapped")
+
+    }
+    
+    func commentButtonTapped() {
+        print("commentButtonTapped")
+
+    }
+    
+    func didSelectComment() {
+        print("didSelectComment")
+
+    }
+    
 }
 
 // MARK: - Network
@@ -70,15 +106,5 @@ extension RecipeDetailViewModel {
             }
         }
     }
-//        func fetchCommentsListingType() {
-//            dataProvider.request(for: GetRecipeCommentsRequest(recipeId: 7, page: 1)) { [weak self] (result) in
-//                guard let self = self else { return }
-//                switch result {
-//                case .success(let response):
-//                    self.comment = response.data[0]
-//                case .failure(let error):
-//                    print("failure data")
-//                }
-//            }
-//        }
+
     }

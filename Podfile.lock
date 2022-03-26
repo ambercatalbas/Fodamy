@@ -8,6 +8,7 @@ PODS:
   - MobilliumUserDefaults (2.0.0)
   - QuickLayout (3.0.0)
   - Segmentio (4.1)
+  - SKPhotoBrowser (7.0.0)
   - SwiftEntryKit (1.2.7):
     - QuickLayout (= 3.0.0)
   - SwiftGen (6.5.1)
@@ -23,6 +24,7 @@ DEPENDENCIES:
   - MobilliumDateFormatter (~> 1.2)
   - MobilliumUserDefaults (~> 2.0)
   - Segmentio (~> 4.1)
+  - SKPhotoBrowser (~> 7.0)
   - SwiftEntryKit (~> 1.2)
   - SwiftGen (~> 6.5)
   - SwiftLint (~> 0.44)
@@ -39,6 +41,7 @@ SPEC REPOS:
     - MobilliumUserDefaults
     - QuickLayout
     - Segmentio
+    - SKPhotoBrowser
     - SwiftEntryKit
     - SwiftGen
     - SwiftLint
@@ -54,11 +57,12 @@ SPEC CHECKSUMS:
   MobilliumUserDefaults: 002aa4bb663127d2dcc0814c17430c918a1e1445
   QuickLayout: 07b45a72b10083fee3f095990cfed1c1e7b27f0a
   Segmentio: ab29def64e1bff6e6e9b97671788a99bed3f1d9f
+  SKPhotoBrowser: 6aaa8f232752e87c7e76bace183bead0a137097d
   SwiftEntryKit: 537c92699d6034efb1ef9c32b11e0b37c97aa589
   SwiftGen: a6d22010845f08fe18fbdf3a07a8e380fd22e0ea
   SwiftLint: 2c16e8fa99dac2e440dc0c70ea74d2532048f6cf
   TinyConstraints: 7b7ccc0c485bb3bb47082138ff28bc33cd49897f
 
-PODFILE CHECKSUM: 39bb8afbae1ffc178cb28b1b0e1953d833f196cc
+PODFILE CHECKSUM: 43f97b7f7a468a946c0045a958019b7efdec83f9
 
 COCOAPODS: 1.11.0

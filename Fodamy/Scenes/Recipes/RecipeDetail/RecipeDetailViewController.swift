@@ -69,6 +69,7 @@ final class RecipeDetailViewController: BaseViewController<RecipeDetailViewModel
         subscribeViewModel()
         configureContents()
         subscribeViewModel()
+        subscribeActions()
     }
     
     private func subscribeViewModel() {
@@ -140,6 +141,7 @@ extension RecipeDetailViewController {
         commentsCollectionView.delegate = self
         
         view.backgroundColor = .appSecondaryBackground
+        viewModel.showInfo()
         imageSliderView.set(viewModel: ImageSliderViewModel(cellItems: viewModel.imageSliderCellItems))
         ingredientsView.set(viewModel: IngredientsViewModel(ingredients: viewModel.recipe.ingredients, numberOfPerson: viewModel.recipe.numberOfPerson.text))
         infoView.set(viewModel: InfoCardViewModel(recipeName: viewModel.recipe.title,
@@ -154,6 +156,7 @@ extension RecipeDetailViewController {
                                                       isfollowing: viewModel.recipe.user.isFollowing,
                                                       recipeCount: viewModel.recipe.user.recipeCount,
                                                       followedCount: viewModel.recipe.user.followingCount))
+        commentButton.addTarget(self, action: #selector(commentButtonTapped), for: .touchUpInside)
     }
     
     private func setLocalize() {
@@ -165,15 +168,25 @@ extension RecipeDetailViewController {
 // MARK: - Actions
 extension RecipeDetailViewController {
     
-    @objc
-    private func infoButtonTapped() {
-        viewModel.showInfo()
+    private func subscribeActions() {
+        infoView.infoButtonTapped = { [weak self] in
+            guard let self = self else { return }
+            self.viewModel.likeButtonTapped()
+        }
+        
+        userCardView.followButtonTapped = { [weak self] in
+            guard let self = self else { return }
+            self.viewModel.followButtonTapped()
+        }
     }
+    
     @objc
     private func commentButtonTapped() {
-        viewModel.showInfo()
+        viewModel.commentButtonTapped()
     }
+
 }
+
 
 // MARK: - UICollectionViewDataSource
 extension RecipeDetailViewController: UICollectionViewDataSource {
@@ -190,10 +203,6 @@ extension RecipeDetailViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if viewModel.commentNumberOfItemsAt(section: 0) == 0 {
             let cell: EmptyCell = collectionView.dequeueReusableCell(for: indexPath)
-//            let cell: CommentCell = collectionView.dequeueReusableCell(for: indexPath)
-//            let cellItem = viewModel.commentCellItemAt(indexPath: indexPath)
-//            cell.set(viewModel: CommentCellModel(userId: 0, imageUrl: "", username: "", recipeCount: 0, followedCount: 0, differenceText: "", commentId: 0, commentText: "", isOwner: false, isFollowing: false))
-
             return cell
         }
         

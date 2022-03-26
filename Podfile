@@ -25,6 +25,8 @@ target 'Fodamy' do
    pod 'SwiftEntryKit', '~> 1.2'
    pod 'KeychainSwift', '~> 19.0'
    pod 'Segmentio', '~> 4.1'
+   pod 'SKPhotoBrowser', '~> 7.0'
+
   target 'FodamyTests' do
     inherit! :search_paths
     # Pods for testing
