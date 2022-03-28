@@ -34,6 +34,8 @@ public enum L10n {
   public enum General {
     /// Yorum Ekle
     public static let addComment = L10n.tr("Localizable", "General.addComment")
+    /// İptal
+    public static let cancel = L10n.tr("Localizable", "General.cancel")
     /// Yorum
     public static let comment = L10n.tr("Localizable", "General.comment")
     /// Yorumlar
@@ -60,6 +62,8 @@ public enum L10n {
     public static let recipeSteps = L10n.tr("Localizable", "General.recipeSteps")
     /// Üye Ol
     public static let register = L10n.tr("Localizable", "General.register")
+    /// Takibi Bırak
+    public static let unfollow = L10n.tr("Localizable", "General.unfollow")
   }
 
   public enum Home {

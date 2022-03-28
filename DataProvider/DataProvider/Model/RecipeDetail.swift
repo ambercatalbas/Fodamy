@@ -13,8 +13,8 @@ public struct RecipeDetail: Codable {
     public let language: String
     public let ingredients: String
     public let directions: String
-    public let isLiked: Bool
-    public let isFavorited: Bool
+    public var isLiked: Bool
+    public var isFavorited: Bool
     public let difference: String
     public let isEditorChoice: Bool
     public let isOwner: Bool

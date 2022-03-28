@@ -63,7 +63,7 @@ final class RecipeDetailViewController: BaseViewController<RecipeDetailViewModel
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel.getRecipeComment()
-
+        viewModel.getRecipeDetail()
         addSubViews()
         setLocalize()
         subscribeViewModel()
@@ -76,7 +76,11 @@ final class RecipeDetailViewController: BaseViewController<RecipeDetailViewModel
         viewModel.reloadCommentData = { [weak self] in
             self?.commentsCollectionView.reloadData()
         }
-
+        
+        viewModel.reloadDetailData = { [weak self] in
+            self?.updateConfigureContents()
+        }
+        
     }
 
 }
@@ -88,6 +92,7 @@ extension RecipeDetailViewController {
         addScrollView()
         addContentStackView()
         addCommentsContainerView()
+        addShareButton()
     }
     private func addScrollView() {
         view.addSubview(scrollView)
@@ -130,13 +135,16 @@ extension RecipeDetailViewController {
         commentButton.edgesToSuperview(insets: .init(top: 0, left: 15, bottom: 15, right: 15))
         commentButton.addTarget(self, action: #selector(commentButtonTapped), for: .touchUpInside)
     }
-
+    private func addShareButton() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: .icShare, style: .plain, target: self, action: #selector(shareButtonTapped))
+    }
 }
 
 // MARK: - Configure and Set Localize
 extension RecipeDetailViewController {
     
     private func configureContents() {
+        title = viewModel.recipe.title
         commentsCollectionView.dataSource = self
         commentsCollectionView.delegate = self
         
@@ -150,7 +158,7 @@ extension RecipeDetailViewController {
                                                   commentCount: viewModel.recipe.commentCount,
                                                   likeCount: viewModel.recipe.likeCount))
         stepsView.set(viewModel: StepsViewModel(directions: viewModel.recipe.directions, timeOfRecipe: viewModel.recipe.timeOfRecipe.text))
-        userCardView.set(viewModel: UserCardViewModel(userId: viewModel.recipe.user.id ?? 0,
+        userCardView.set(viewModel: UserCardViewModel(userId: viewModel.recipe.user.id,
                                                       userImageUrl: viewModel.recipe.user.image?.url,
                                                       username: viewModel.recipe.user.username,
                                                       isfollowing: viewModel.recipe.user.isFollowing,
@@ -158,7 +166,20 @@ extension RecipeDetailViewController {
                                                       followedCount: viewModel.recipe.user.followingCount))
         commentButton.addTarget(self, action: #selector(commentButtonTapped), for: .touchUpInside)
     }
-    
+    private func updateConfigureContents() {
+        
+        infoView.set(viewModel: InfoCardViewModel(recipeName: viewModel.recipe.title,
+                                                  categoryName: viewModel.recipe.category.name,
+                                                  difference: viewModel.recipe.difference,
+                                                  commentCount: viewModel.recipe.commentCount,
+                                                  likeCount: viewModel.recipeDetail?.likeCount ?? 0))
+        userCardView.set(viewModel: UserCardViewModel(userId: viewModel.recipe.user.id,
+                                                      userImageUrl: viewModel.recipe.user.image?.url,
+                                                      username: viewModel.recipe.user.username,
+                                                      isfollowing: viewModel.recipeDetail?.user.isFollowing,
+                                                      recipeCount: viewModel.recipe.user.recipeCount,
+                                                      followedCount: viewModel.recipe.user.followingCount))
+    }
     private func setLocalize() {
         commentButton.setTitle(L10n.General.addComment, for: .normal)
     }
@@ -183,6 +204,11 @@ extension RecipeDetailViewController {
     @objc
     private func commentButtonTapped() {
         viewModel.commentButtonTapped()
+    }
+    
+    @objc
+    private func shareButtonTapped() {
+        viewModel.shareButtonTapped()
     }
 
 }

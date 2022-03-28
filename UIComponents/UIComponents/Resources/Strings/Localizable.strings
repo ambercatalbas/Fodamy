@@ -63,6 +63,7 @@
 "General.comment" = "Yorum";
 "General.like" = "Beğeni";
 "General.follow" = "Takip Et";
+"General.unfollow" = "Takibi Bırak";
 "General.following" = "Takip Ediliyor";
 "General.recipeIngredients" = "Malzemeler";
 "General.recipeSteps" = "Yapılışı";
@@ -73,6 +74,9 @@
 "General.recipe" = "Tarif";
 "General.follower" = "Takipçi";
 "General.minute" = "dk";
+"General.cancel" = "İptal";
+
+
 
 // MARK: - Action
 "Action.block" = "Block";

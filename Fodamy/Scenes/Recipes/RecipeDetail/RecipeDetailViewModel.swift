@@ -12,6 +12,7 @@ import KeychainSwift
 protocol RecipeDetailViewDataSource {
     var recipe: Recipe { get set }
     var recipeDetail: RecipeDetail? { get }
+    var likeCount: Int? { get }
     
     func commentNumberOfItemsAt(section: Int) -> Int
     func commentCellItemAt(indexPath: IndexPath) -> CommentCellProtocol
@@ -19,8 +20,6 @@ protocol RecipeDetailViewDataSource {
 }
 
 protocol RecipeDetailViewEventSource {
-    var toggleIsLiked: VoidClosure? { get set }
-    var toggleIsFollowing: VoidClosure? { get set }
     var reloadCommentData: VoidClosure? { get set }
     var reloadDetailData: VoidClosure? { get set }
 }
@@ -34,9 +33,8 @@ protocol RecipeDetailViewProtocol: RecipeDetailViewDataSource, RecipeDetailViewE
 }
 
 final class RecipeDetailViewModel: BaseViewModel<RecipeDetailRouter>, RecipeDetailViewProtocol {
+    var likeCount: Int?
     var recipeDetail: RecipeDetail?
-    var toggleIsLiked: VoidClosure?
-    var toggleIsFollowing: VoidClosure?
     var reloadCommentData: VoidClosure?
     var reloadDetailData: VoidClosure?
     var recipe: Recipe
@@ -81,8 +79,21 @@ extension RecipeDetailViewModel {
     }
     
     func followButtonTapped() {
-        print("followButtonTapped")
-
+        guard keychain.get(Keychain.token) != nil else {
+            router.presentLoginWarningPopup(loginHandler: { [weak self] in
+                self?.router.presentLogin()
+            })
+            return
+        }
+        
+        switch recipeDetail?.user.isFollowing ?? false {
+        case true:
+            router.presentUnfollowAlertView {
+                self.userFollowRequest(followType: .unfollow)
+            }
+        case false:
+            self.userFollowRequest(followType: .follow)
+        }
     }
     
     func commentButtonTapped() {
@@ -93,6 +104,14 @@ extension RecipeDetailViewModel {
     func didSelectComment() {
         print("didSelectComment")
 
+    }
+    
+    func shareButtonTapped() {
+        let title = recipe.title
+        let imageUrlString = recipe.user.image?.url
+        guard let imageUrl = URL(string: imageUrlString ?? "") else { return }
+        let items: [Any] = [title ?? "", imageUrl]
+        router.presentShareSheet(items: items)
     }
     
 }
@@ -138,17 +157,32 @@ extension RecipeDetailViewModel {
         case false:
             request = RecipeLikeRequest(recipeId: recipeId, likeType: .like)
         }
-        toggleIsLiked?()
         dataProvider.request(for: request) { [weak self] (result) in
             guard let self = self else { return }
             switch result {
             case .success(let response):
                 print(response.message)
+                self.getRecipeDetail()
             case .failure(let error):
                 print(error.localizedDescription)
-                self.toggleIsLiked?()
             }
         }
     }
+    
+    private func userFollowRequest(followType: UserFollowRequest.FollowType) {
+        guard let followedId = recipeDetail?.user.id else { return }
+        let request = UserFollowRequest(followedId: followedId, followType: followType)
+        dataProvider.request(for: request) { [weak self] (result) in
+            guard let self = self else { return }
+            switch result {
+            case .success(let response):
+                print(response.message)
+                self.getRecipeDetail()
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+
     
     }
