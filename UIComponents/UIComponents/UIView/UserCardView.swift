@@ -32,15 +32,18 @@ public class UserCardView: UIView {
     private let followButton = ButtonFactory.createPrimaryBorderedButton(style: .small)
     
     weak var viewModel: UserCardViewProtocol?
-    
+    public var followButtonTapped: VoidClosure?
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubViews()
+        configure()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         addSubViews()
+        configure()
     }
     
 }
@@ -82,7 +85,10 @@ extension UserCardView {
 
 // MARK: - Configure and SetLocalize
 extension UserCardView {
-
+    
+    private func configure() {
+        backgroundColor = .appWhite
+    }
     public func set(viewModel: UserCardViewProtocol) {
         self.viewModel = viewModel
         imageView.setImage(viewModel.userImageUrl)
@@ -91,11 +97,15 @@ extension UserCardView {
         followButton.setTitle(viewModel.followButtonTitle, for: .normal)
         followButton.setTitleColor(viewModel.followButtonSetTitleColor, for: .normal)
         followButton.backgroundColor = viewModel.followButtonBackgroundColor
+        followButton.addTarget(self, action: #selector(followButtonAction), for: .touchUpInside)
     }
     
 }
 
 // MARK: - Actions
 extension UserCardView {
-    
+    @objc
+    private func followButtonAction() {
+        self.followButtonTapped?()
+    }
 }

@@ -43,16 +43,16 @@ public final class InfoCardViewModel: InfoCardViewProtocol {
         self.difference = difference
         self.commentCount = commentCount
         self.likeCount = likeCount
-        let text = NSMutableAttributedString()
-        text.append(NSAttributedString(string: "\(commentCount)", attributes: [NSAttributedString.Key.foregroundColor: UIColor.appRed]))
-        text.append(NSAttributedString(string: " ", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white]))
-        text.append(NSAttributedString(string: L10n.General.comment, attributes: [NSAttributedString.Key.foregroundColor: UIColor.appRaven]))
-        self.commentCountText = text
+        let commentCountText = NSMutableAttributedString()
+        commentCountText.append(NSAttributedString(string: "\(commentCount)", attributes: [NSAttributedString.Key.foregroundColor: UIColor.appRed]))
+        commentCountText.append(NSAttributedString(string: " ", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white]))
+        commentCountText.append(NSAttributedString(string: L10n.General.comment, attributes: [NSAttributedString.Key.foregroundColor: UIColor.appRaven]))
+        self.commentCountText = commentCountText
         let likeCountText = NSMutableAttributedString()
         likeCountText.append(NSAttributedString(string: "\(likeCount)", attributes: [NSAttributedString.Key.foregroundColor: UIColor.appRed]))
         likeCountText.append(NSAttributedString(string: " ", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white]))
         likeCountText.append(NSAttributedString(string: L10n.General.like, attributes: [NSAttributedString.Key.foregroundColor: UIColor.appRaven]))
-        self.likeCountText = text
+        self.likeCountText = likeCountText
     }
 
 }

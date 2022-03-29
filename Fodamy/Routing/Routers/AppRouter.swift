@@ -11,7 +11,7 @@ import MobilliumUserDefaults
 
 final class AppRouter: Router, AppRouter.Routes {
     
-    typealias Routes = MainTabBarRoute & IntroRoute
+    typealias Routes = MainTabBarRoute & IntroRoute & SKPhotoBrowserRoute
     
     static let shared = AppRouter()
     
@@ -21,6 +21,11 @@ final class AppRouter: Router, AppRouter.Routes {
         } else {
             placeOnWindowIntro()
         }
+    }
+    
+    func presentSKPhotoBrowser(with photos: [String], delegate: PhotoBrowserDelegate, initialPageIndex: Int = 0) {
+        guard let topVC = topViewController() else { return }
+        presentSKPhotoBrowser(with: photos, viewController: topVC, initialPageIndex: initialPageIndex, delegate: delegate)
     }
     
     private func topViewController() -> UIViewController? {

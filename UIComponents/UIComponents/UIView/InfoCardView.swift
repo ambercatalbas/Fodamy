@@ -89,6 +89,12 @@ public class InfoCardView: UIView {
         .build()
     weak var viewModel: InfoCardViewProtocol?
     public var infoButtonTapped: VoidClosure?
+    
+    public var likeButtonColor: UIColor? {
+        willSet {
+            likeButton.tintColor = newValue
+        }
+    }
 
     override init(frame: CGRect) {
         super.init(frame: frame)

@@ -111,7 +111,7 @@ extension StepsView {
     
     public func set(viewModel: StepsViewProtocol) {
         self.viewModel = viewModel
-        timeOfRecipeLabel.text = viewModel.timeOfRecipe
+        timeOfRecipeLabel.text = "\(viewModel.timeOfRecipe)\(L10n.General.minute)"
         drectionsLabel.text = viewModel.directions
     }
 }

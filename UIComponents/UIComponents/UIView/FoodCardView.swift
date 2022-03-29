@@ -162,11 +162,8 @@ extension FoodCardView {
         categoryNameLabel.text = recipe.category.name
         recipeImageView.setImage(recipe.images?[0].url)
         recipeCountLabel.text = recipeCountText
-        if recipe.isEditorChoice {
-            badgeImageView.isHidden = false
-        } else {
-            badgeImageView.isHidden = true
-        }
+        badgeImageView.isHidden = !recipe.isEditorChoice
+
 
     }
  

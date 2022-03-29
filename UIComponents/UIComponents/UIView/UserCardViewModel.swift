@@ -8,7 +8,7 @@
 import Foundation
 
 public protocol UserCardViewDataSource: AnyObject {
-    var userId: Int { get }
+    var userId: Int? { get }
     var userImageUrl: String? { get }
     var username: String? { get }
     var userCountText: String? { get }
@@ -16,7 +16,7 @@ public protocol UserCardViewDataSource: AnyObject {
     var followButtonTitle: String? { get }
     var followButtonSetTitleColor: UIColor? { get }
     var followButtonBackgroundColor: UIColor? { get }
-    var followingCount: Int { get }
+    var followedCount: Int { get }
     var recipeCount: Int { get }
 }
 
@@ -33,11 +33,11 @@ public final class UserCardViewModel: UserCardViewProtocol {
     public var followButtonBackgroundColor: UIColor?
     public var followButtonTitle: String?
     public var isFollowing: Bool?
-    public var userId: Int
+    public var userId: Int?
     public var userImageUrl: String?
     public var username: String?
     public var userCountText: String?
-    public var followingCount: Int
+    public var followedCount: Int
     public var recipeCount: Int
     
     public init(userId: Int,
@@ -45,15 +45,15 @@ public final class UserCardViewModel: UserCardViewProtocol {
                 username: String?,
                 isfollowing: Bool?,
                 recipeCount: Int,
-                followingCount: Int) {
+                followedCount: Int) {
         
         self.userId = userId
         self.userImageUrl = userImageUrl
         self.username = username
         self.isFollowing = isfollowing
         self.recipeCount = recipeCount
-        self.followingCount = followingCount
-        self.userCountText = "\(self.recipeCount) \(L10n.General.recipe) \(self.followingCount) \(L10n.General.follower)"
+        self.followedCount = followedCount
+        self.userCountText = "\(self.recipeCount) \(L10n.General.recipe) \(self.followedCount) \(L10n.General.follower)"
         if isFollowing ?? true {
             self.followButtonTitle = L10n.General.following
             self.followButtonSetTitleColor = .appWhite

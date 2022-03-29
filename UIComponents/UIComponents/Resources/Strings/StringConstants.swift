@@ -11,6 +11,13 @@ import Foundation
 // swiftlint:disable nesting type_body_length type_name vertical_whitespace_opening_braces
 public enum L10n {
 
+  public enum Action {
+    /// Block
+    public static let block = L10n.tr("Localizable", "Action.block")
+    /// Giriş yapmanız gereklidir.
+    public static let loginWarning = L10n.tr("Localizable", "Action.loginWarning")
+  }
+
   public enum Error {
     /// Lütfen bilgilerinizi kontrol ediniz.
     public static let checkInformations = L10n.tr("Localizable", "Error.checkInformations")
@@ -27,6 +34,8 @@ public enum L10n {
   public enum General {
     /// Yorum Ekle
     public static let addComment = L10n.tr("Localizable", "General.addComment")
+    /// İptal
+    public static let cancel = L10n.tr("Localizable", "General.cancel")
     /// Yorum
     public static let comment = L10n.tr("Localizable", "General.comment")
     /// Yorumlar
@@ -43,6 +52,8 @@ public enum L10n {
     public static let like = L10n.tr("Localizable", "General.like")
     /// Giriş Yap
     public static let login = L10n.tr("Localizable", "General.login")
+    /// dk
+    public static let minute = L10n.tr("Localizable", "General.minute")
     /// Tarif
     public static let recipe = L10n.tr("Localizable", "General.recipe")
     /// Malzemeler
@@ -51,6 +62,8 @@ public enum L10n {
     public static let recipeSteps = L10n.tr("Localizable", "General.recipeSteps")
     /// Üye Ol
     public static let register = L10n.tr("Localizable", "General.register")
+    /// Takibi Bırak
+    public static let unfollow = L10n.tr("Localizable", "General.unfollow")
   }
 
   public enum Home {
@@ -113,12 +126,19 @@ public enum L10n {
   }
 
   public enum Placeholder {
+    /// Bir şeyler yazın..
+    public static let comment = L10n.tr("Localizable", "Placeholder.comment")
     /// E-mail Adresi
     public static let email = L10n.tr("Localizable", "Placeholder.email")
     /// Şifre
     public static let password = L10n.tr("Localizable", "Placeholder.password")
     /// Kullanıcı Adı
     public static let username = L10n.tr("Localizable", "Placeholder.username")
+  }
+
+  public enum RecipeDetail {
+    /// Henüz yorum yapılmamıştır.
+    public static let noComment = L10n.tr("Localizable", "RecipeDetail.noComment")
   }
 
   public enum RegisterViewController {

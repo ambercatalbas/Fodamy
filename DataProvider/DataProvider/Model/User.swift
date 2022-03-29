@@ -5,40 +5,15 @@
 //  Created by AMBER ÇATALBAŞ on 13.03.2022.
 //
 
-//public struct User: Decodable {
-//    public let id: Int
-//    public let username: String?
-//    public let image: Image?
-//    public let followedCount: Int
-//    public let followingCount: Int
-//    public let recipeCount: Int
-//    public let isFollowing: Bool
-//    public let favoritesCount: Int
-//    public let likesCount: Int
-//
-//    enum CodingKeys: String, CodingKey {
-//        case id
-//        case username
-//        case image
-//        case followedCount = "followed_count"
-//        case followingCount = "following_count"
-//        case recipeCount = "recipe_count"
-//        case isFollowing = "is_following"
-//        case favoritesCount = "favorites_count"
-//        case likesCount = "likes_count"
-//    }
-//
-//}
-
 // MARK: - User
 public struct User: Codable {
-    public let id: Int?
-    public let username: String?
-    public let isTopUserChoice: Bool?
+    public let id: Int
+    public let username: String
+    public let isTopUserChoice: Bool
     public let followedCount: Int
     public let followingCount: Int
     public let recipeCount: Int
-    public let isFollowing: Bool?
+    public let isFollowing: Bool
     public let favoritesCount: Int
     public let likesCount: Int
     public let image: Image?
@@ -56,13 +31,13 @@ public struct User: Codable {
         case image
     }
 
-    public init(id: Int?,
-                username: String?,
-                isTopUserChoice: Bool?,
+    public init(id: Int,
+                username: String,
+                isTopUserChoice: Bool,
                 followedCount: Int,
                 followingCount: Int,
                 recipeCount: Int,
-                isFollowing: Bool?,
+                isFollowing: Bool,
                 favoritesCount: Int,
                 likesCount: Int,
                 image: Image?) {
