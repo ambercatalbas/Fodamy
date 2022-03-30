@@ -12,7 +12,10 @@ public struct Comment: Codable {
     public let difference: String
     public let user: User
 
-    public init(id: Int, text: String, difference: String, user: User) {
+    public init(id: Int,
+                text: String,
+                difference: String,
+                user: User) {
         self.id = id
         self.text = text
         self.difference = difference

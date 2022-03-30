@@ -163,7 +163,8 @@ extension RecipeDetailViewController {
                                                       username: viewModel.recipe.user.username,
                                                       isfollowing: viewModel.recipe.user.isFollowing,
                                                       recipeCount: viewModel.recipe.user.recipeCount,
-                                                      followedCount: viewModel.recipe.user.followingCount))
+                                                      followedCount: viewModel.recipe.user.followingCount,
+                                                      followButtonisHidden: false))
         commentButton.addTarget(self, action: #selector(commentButtonTapped), for: .touchUpInside)
     }
     private func updateConfigureContents() {
@@ -178,7 +179,8 @@ extension RecipeDetailViewController {
                                                       username: viewModel.recipe.user.username,
                                                       isfollowing: viewModel.recipeDetail?.user.isFollowing,
                                                       recipeCount: viewModel.recipe.user.recipeCount,
-                                                      followedCount: viewModel.recipe.user.followingCount))
+                                                      followedCount: viewModel.recipe.user.followingCount,
+                                                      followButtonisHidden: false))
     }
     private func setLocalize() {
         commentButton.setTitle(L10n.General.addComment, for: .normal)
@@ -234,9 +236,8 @@ extension RecipeDetailViewController: UICollectionViewDataSource {
         
         let cell: CommentCell = collectionView.dequeueReusableCell(for: indexPath)
         let cellItem = viewModel.commentCellItemAt(indexPath: indexPath)
-        cell.set(with: cellItem)
-        
-//        cell.isMoreButtonHidden = true
+        cell.set(viewModel: cellItem)
+        cell.isMoreButtonHidden = true
         return cell
     }
     
@@ -246,7 +247,7 @@ extension RecipeDetailViewController: UICollectionViewDataSource {
 extension RecipeDetailViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        viewModel.didSelectComment()
+        viewModel.didSelectComment()
     }
 }
 

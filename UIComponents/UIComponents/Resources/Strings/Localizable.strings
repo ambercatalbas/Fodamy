@@ -35,6 +35,12 @@
 // MARK: RecipeDetail
 "RecipeDetail.noComment" = "Henüz yorum yapılmamıştır.";
 
+// MARK: - CommentEdit
+"CommentEditController.title" = "YORUM DÜZENLE";
+"CommentEditController.save" = "Kaydet";
+
+// MARK: - CommentList
+"CommentListController.title" = "YORUMLAR";
 
 // MARK: - PasswordReset
 "PasswordResetController.title" = "Şifre Sıfırlama";
@@ -75,6 +81,9 @@
 "General.follower" = "Takipçi";
 "General.minute" = "dk";
 "General.cancel" = "İptal";
+"General.delete" = "Sil";
+"General.edit" = "Düzenle";
+
 
 
 

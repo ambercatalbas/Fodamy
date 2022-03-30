@@ -30,7 +30,6 @@ public class UserCardView: UIView {
         .textAlignment(.left)
         .build()
     private let followButton = ButtonFactory.createPrimaryBorderedButton(style: .small)
-    
     weak var viewModel: UserCardViewProtocol?
     public var followButtonTapped: VoidClosure?
 
@@ -55,6 +54,7 @@ extension UserCardView {
         addImageView()
         addStackView()
         addFollowButton()
+        
     }
     
     private func addImageView() {
@@ -94,6 +94,7 @@ extension UserCardView {
         imageView.setImage(viewModel.userImageUrl)
         nameLabel.text = viewModel.username
         countLabel.text = viewModel.userCountText
+        followButton.isHidden = viewModel.followButtonisHidden
         followButton.setTitle(viewModel.followButtonTitle, for: .normal)
         followButton.setTitleColor(viewModel.followButtonSetTitleColor, for: .normal)
         followButton.backgroundColor = viewModel.followButtonBackgroundColor

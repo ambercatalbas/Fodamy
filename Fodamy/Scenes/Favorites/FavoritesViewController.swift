@@ -11,7 +11,6 @@ final class FavoritesViewController: BaseViewController<FavoritesViewModel> {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "favorites"
         addSubViews()
         configureContents()
         setLocalize()
@@ -33,6 +32,7 @@ extension FavoritesViewController {
 extension FavoritesViewController {
     
     private func configureContents() {
+        title = "favorites"
 
     }
     

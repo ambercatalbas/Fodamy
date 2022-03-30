@@ -97,13 +97,11 @@ extension RecipeDetailViewModel {
     }
     
     func commentButtonTapped() {
-        print("commentButtonTapped")
-
+        router.pushCommentList(recipeId: recipe.id, isKeyboardOpen: true)
     }
     
     func didSelectComment() {
-        print("didSelectComment")
-
+        router.pushCommentList(recipeId: recipe.id, isKeyboardOpen: false)
     }
     
     func shareButtonTapped() {

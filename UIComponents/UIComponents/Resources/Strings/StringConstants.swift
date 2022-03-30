@@ -18,6 +18,18 @@ public enum L10n {
     public static let loginWarning = L10n.tr("Localizable", "Action.loginWarning")
   }
 
+  public enum CommentEditController {
+    /// Kaydet
+    public static let save = L10n.tr("Localizable", "CommentEditController.save")
+    /// YORUM DÜZENLE
+    public static let title = L10n.tr("Localizable", "CommentEditController.title")
+  }
+
+  public enum CommentListController {
+    /// YORUMLAR
+    public static let title = L10n.tr("Localizable", "CommentListController.title")
+  }
+
   public enum Error {
     /// Lütfen bilgilerinizi kontrol ediniz.
     public static let checkInformations = L10n.tr("Localizable", "Error.checkInformations")
@@ -40,6 +52,10 @@ public enum L10n {
     public static let comment = L10n.tr("Localizable", "General.comment")
     /// Yorumlar
     public static let comments = L10n.tr("Localizable", "General.comments")
+    /// Sil
+    public static let delete = L10n.tr("Localizable", "General.delete")
+    /// Düzenle
+    public static let edit = L10n.tr("Localizable", "General.edit")
     /// Takip Et
     public static let follow = L10n.tr("Localizable", "General.follow")
     /// Takipçi

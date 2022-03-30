@@ -28,6 +28,12 @@ public class CommentCell: UICollectionViewCell, ReusableView {
         .build()
     weak var viewModel: CommentCellProtocol?
     
+    public var isMoreButtonHidden: Bool? {
+        willSet {
+            moreButton.isHidden = newValue ?? false
+        }
+    }
+    
     private lazy var width: NSLayoutConstraint = {
         let width = contentView.widthAnchor.constraint(equalToConstant: bounds.size.width)
         width.isActive = true
@@ -94,14 +100,15 @@ extension CommentCell {
 // MARK: - Set ViewModel
 public extension CommentCell {
     
-    func set(with viewModel: CommentCellProtocol) {
+    func set(viewModel: CommentCellProtocol) {
         self.viewModel = viewModel
         userCardView.set(viewModel: UserCardViewModel(userId: viewModel.userId,
                                                       userImageUrl: viewModel.imageUrl,
                                                       username: viewModel.username,
                                                       isfollowing: viewModel.isFollowing,
                                                       recipeCount: viewModel.recipeCount,
-                                                      followedCount: viewModel.followedCount))
+                                                      followedCount: viewModel.followedCount,
+                                                      followButtonisHidden: true))
         self.timeDifferenceLabel.text = viewModel.differenceText
         self.commentLabel.text = viewModel.commentText
         self.moreButton.isHidden = !viewModel.isOwner
