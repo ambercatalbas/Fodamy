@@ -109,7 +109,6 @@ extension RecipesViewController: UICollectionViewDelegateFlowLayout {
     
 }
 // swiftlint:enable line_length
-
 // MARK: - UIScrollViewDelegate
 extension RecipesViewController {
     
