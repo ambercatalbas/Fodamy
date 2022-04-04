@@ -1,6 +1,8 @@
 # Uncomment the next line to define a global platform for your project
 # platform :ios, '11.0'
 
+use_frameworks!
+
 workspace 'Fodamy'
 
 target 'Fodamy' do
@@ -19,8 +21,12 @@ target 'Fodamy' do
    pod 'MobilliumUserDefaults', '~> 2.0'
    pod 'MobilliumDateFormatter', '~> 1.2'
    pod 'MobilliumBuilders', '~> 1.4'
+   pod 'Kingfisher', '~> 6.3.1'
    pod 'SwiftEntryKit', '~> 1.2'
    pod 'KeychainSwift', '~> 19.0'
+   pod 'Segmentio', '~> 4.1'
+   pod 'SKPhotoBrowser', '~> 7.0'
+
   target 'FodamyTests' do
     inherit! :search_paths
     # Pods for testing
@@ -53,7 +59,7 @@ target 'DataProvider' do
 end
 
 target 'UIComponents' do
-  
+
   project 'UIComponents/UIComponents.xcodeproj'
   
   # Pods for UIComponents
@@ -63,7 +69,7 @@ target 'UIComponents' do
   pod 'SwiftGen', '~> 6.5'
   pod 'MobilliumBuilders', '~> 1.4'
   pod 'Segmentio', '~> 4.1'
-  pod 'Kingfisher', :git => 'https://github.com/onevcat/Kingfisher.git', :branch => 'version6-xcode13'
+  pod 'Kingfisher', '~> 6.3.1'
   pod 'SwiftEntryKit', '~> 1.2'
   
   target 'UIComponentsTests' do

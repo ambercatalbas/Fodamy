@@ -27,7 +27,7 @@ public enum Asset {
     public static let appPrimaryBackground = ColorAsset(name: "appPrimaryBackground")
     public static let appRaven = ColorAsset(name: "appRaven")
     public static let appRed = ColorAsset(name: "appRed")
-    public static let appSecondaryBackgroun = ColorAsset(name: "appSecondaryBackgroun")
+    public static let appSecondaryBackground = ColorAsset(name: "appSecondaryBackground")
     public static let appWhite = ColorAsset(name: "appWhite")
     public static let appYellow = ColorAsset(name: "appYellow")
     public static let appZircon = ColorAsset(name: "appZircon")
@@ -56,8 +56,8 @@ public enum Asset {
     public static let imgLogoFodamy = ImageAsset(name: "img_logo_fodamy")
     public static let imgIntro1 = ImageAsset(name: "img_ıntro_1")
     public static let imgIntro2 = ImageAsset(name: "img_ıntro_2")
-    public static let imgIntro31 = ImageAsset(name: "img_ıntro_3-1")
     public static let imgIntro3 = ImageAsset(name: "img_ıntro_3")
+    public static let imgIntro4 = ImageAsset(name: "img_ıntro_4")
   }
 }
 // swiftlint:enable identifier_name line_length nesting type_body_length type_name

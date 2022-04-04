@@ -1,0 +1,92 @@
+/* 
+  Modules.strings
+  UIComponents
+
+  Created by AMBER ÇATALBAŞ on 10.03.2022.
+  
+*/
+
+// MARK: - WalkThrough
+"Intro.Next" = "İlerle";
+"Intro.Start" = "Başla!";
+"Intro.firstTitle" = "Welcome to Fodamy Network!";
+"Intro.secondTitle" = "Finding recipes were not that easy.";
+"Intro.thirdTitle" = "Add new recipe.";
+"Intro.fourthTitle" = "Share recipes with others.";
+"Intro.descriptionText" = "Fodamy is the best place to find your favorite recipes in all around the world.";
+
+// MARK: - Register
+"RegisterViewController.title" = "Üye Ol";
+"RegisterViewController.bottomText" = "Hesabın mı var?";
+"RegisterViewController.bottomRedText" = "Giriş Yap";
+
+// MARK: - Login
+"LoginViewController.title" = "Giriş Yap";
+"LoginViewController.bottomBlackText" = "Hesabın mı yok?";
+"LoginViewController.bottomRedText" = "Üye Ol";
+"LoginViewController.forgotPassword" = "Şifrenizi mi unuttunuz?";
+
+// MARK: - Home
+"Home.editorChoiceRecipes" = "EDİTÖR SEÇİMİ";
+"Home.lastAddedRecipes" = "SON EKLENENLER";
+"Home.recipeCommnetAndLikeCount" = "%@ Yorum %@ Beğeni";
+"Home.userRecipeAndFollowerCount" = "%@ Tarif %@ Takipçi";
+
+// MARK: RecipeDetail
+"RecipeDetail.noComment" = "Henüz yorum yapılmamıştır.";
+
+// MARK: - CommentEdit
+"CommentEditController.title" = "YORUM DÜZENLE";
+"CommentEditController.save" = "Kaydet";
+
+// MARK: - CommentList
+"CommentListController.title" = "YORUMLAR";
+
+// MARK: - PasswordReset
+"PasswordResetController.title" = "Şifre Sıfırlama";
+"PasswordResetController.reset" = "Sıfırla";
+
+// MARK: - Placeholder
+"Placeholder.username" = "Kullanıcı Adı";
+"Placeholder.email" = "E-mail Adresi";
+"Placeholder.password" = "Şifre";
+"Placeholder.comment" = "Bir şeyler yazın..";
+
+// MARK: - Error
+"Error.empty" = "%@ alanı boş olamaz.";
+"Error.refreshFromTop" = "Lütfen ekranı yukarıdan aşağıya kaydırarak yenileyiniz.";
+"Error.emptyFields" = "Lütfen boş alanları doldurunuz.";
+"Error.checkInformations" = "Lütfen bilgilerinizi kontrol ediniz.";
+
+// MARK: - Keys
+"Key.username" = "Username";
+"Key.email" = "E-posta";
+"Key.comment" = "Yorum";
+
+// MARK: - General
+"General.login" = "Giriş Yap";
+"General.register" = "Üye Ol";
+"General.comment" = "Yorum";
+"General.like" = "Beğeni";
+"General.follow" = "Takip Et";
+"General.unfollow" = "Takibi Bırak";
+"General.following" = "Takip Ediliyor";
+"General.recipeIngredients" = "Malzemeler";
+"General.recipeSteps" = "Yapılışı";
+"General.addComment" = "Yorum Ekle";
+"General.comments" = "Yorumlar";
+"General.giveUp" = "Vazgeç";
+"General.login" = "Giriş Yap";
+"General.recipe" = "Tarif";
+"General.follower" = "Takipçi";
+"General.minute" = "dk";
+"General.cancel" = "İptal";
+"General.delete" = "Sil";
+"General.edit" = "Düzenle";
+
+
+
+
+// MARK: - Action
+"Action.block" = "Block";
+"Action.loginWarning" = "Giriş yapmanız gereklidir.";

@@ -5,4 +5,6 @@
 //  Created by AMBER ÇATALBAŞ on 9.03.2022.
 //
 
-final class IntroRouter: Router {}
+final class IntroRouter: Router, IntroRouter.Routes {
+    typealias Routes = MainTabBarRoute
+}

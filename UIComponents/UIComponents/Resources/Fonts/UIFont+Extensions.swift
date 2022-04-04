@@ -2,8 +2,7 @@
 //  UIFont+Extensions.swift
 //  UIComponents
 //
-//  Created by Mehmet Salih Aslan on 26.02.2021.
-//  Copyright © 2021 Mobillium. All rights reserved.
+//  Created by AMBER ÇATALBAŞ on 9.03.2022.
 //
 
 import UIKit

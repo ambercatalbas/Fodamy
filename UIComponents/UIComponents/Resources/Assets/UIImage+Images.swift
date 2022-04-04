@@ -22,12 +22,12 @@ public extension UIImage {
       return Asset.Images.imgIntro2.image
   }
 
-  static var imgIntro31: UIImage {
-      return Asset.Images.imgIntro31.image
-  }
-
   static var imgIntro3: UIImage {
       return Asset.Images.imgIntro3.image
+  }
+
+  static var imgIntro4: UIImage {
+      return Asset.Images.imgIntro4.image
   }
 }
 // swiftlint:enable identifier_name line_length nesting type_body_length type_name
