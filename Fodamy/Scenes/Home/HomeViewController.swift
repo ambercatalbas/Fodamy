@@ -10,12 +10,13 @@ import MobilliumBuilders
 import TinyConstraints
 import Segmentio
 import KeychainSwift
+import MobilliumUserDefaults
 
 final class HomeViewController: BaseViewController<HomeViewModel> {
     
     private let logoView = LogoView()
     private let segmentView = Segmentio()
-        
+    
     private let pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
     
     private lazy var subViewControllers: [UIViewController] = {
@@ -29,9 +30,22 @@ final class HomeViewController: BaseViewController<HomeViewModel> {
         addSubViews()
         configureContents()
         setLocalize()
-        
+        subscribeViewModelEvents()
+
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        checkIsUserLogin()
     }
     
+    private func subscribeViewModelEvents() {
+        viewModel.didSuccesLogout = { [weak self] in
+            guard let self = self else { return }
+            self.keychain.delete(Keychain.token)
+            DefaultsKey.userId.remove()
+            self.navigationItem.rightBarButtonItem = .none
+        }
+    }
 }
 
 // MARK: - UILayout
@@ -40,7 +54,7 @@ extension HomeViewController {
     private func addSubViews() {
         addSegmentView()
         addPageViewController()
-
+        addNavigationBarLogo()
     }
     
     private func addSegmentView() {
@@ -54,7 +68,7 @@ extension HomeViewController {
         pageViewController.view.edgesToSuperview(excluding: .top, usingSafeArea: true)
         pageViewController.view.topToBottom(of: segmentView)
     }
-
+    
     
 }
 
@@ -77,7 +91,7 @@ extension HomeViewController {
                                               animated: true,
                                               completion: nil)
         setSegmentHandler()
-
+        
     }
     
     private func setLocalize() {
@@ -155,5 +169,27 @@ extension HomeViewController: UIPageViewControllerDelegate, UIPageViewController
                 segmentView.selectedSegmentioIndex = index
             }
         }
+    }
+}
+
+// MARK: - Logout
+extension HomeViewController {
+    
+    private func setupLogoutRightBarButton() {
+        let logoutBarButton = UIBarButtonItem(image: .icLogout, style: .done, target: self, action: #selector(logoutBarButtonDidTap))
+        navigationItem.rightBarButtonItem = logoutBarButton
+    }
+    
+    private func checkIsUserLogin() {
+        if keychain.get(Keychain.token) != nil {
+            setupLogoutRightBarButton()
+        } else {
+            navigationItem.rightBarButtonItem = .none
+        }
+    }
+    
+    @objc
+    private func logoutBarButtonDidTap() {
+        viewModel.userLogout()
     }
 }

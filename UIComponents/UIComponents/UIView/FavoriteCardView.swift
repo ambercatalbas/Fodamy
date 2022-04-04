@@ -73,7 +73,7 @@ extension FavoriteCardView {
     private func addUserNameLabel() {
         addSubview(usernameLabel)
         usernameLabel.leftToSuperview().constant = 23
-        userImageView.topToSuperview().constant = 5
+        usernameLabel.topToSuperview().constant = 5
         usernameLabel.height(20)
         
     }

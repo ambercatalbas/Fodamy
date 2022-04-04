@@ -45,3 +45,15 @@ class BaseViewController<V: BaseViewModelProtocol>: UIViewController {
     #endif
     
 }
+
+// MARK: - NavigationBar Logo
+extension BaseViewController {
+    func addNavigationBarLogo() {
+        let image = UIImage.imgLogoFodamy
+        let imageView = UIImageView()
+        imageView.size(CGSize(width: 110, height: 30))
+        imageView.contentMode = .scaleAspectFit
+        imageView.image = image
+        navigationItem.titleView = imageView
+    }
+}
