@@ -6,5 +6,5 @@
 //
 
 final class HomeRouter: Router, HomeRouter.Routes {
-    typealias Routes = LoginRoute
+    typealias Routes = LoginRoute & RecipeDetailRoute
 }

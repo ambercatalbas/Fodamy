@@ -6,8 +6,11 @@
 //
 
 import UIKit
+import UIComponents
 
 final class FavoritesViewController: BaseViewController<FavoritesViewModel> {
+    
+    let fovoriteCardView = FavoriteCardView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -15,14 +18,26 @@ final class FavoritesViewController: BaseViewController<FavoritesViewModel> {
         configureContents()
         setLocalize()
         
+        subscribeViewModelEvents()
+        
+        
+        
     }
-    
+    private func subscribeViewModelEvents() {
+        viewModel.didSuccessFetchRecipes = { [weak self] in
+            guard let self = self else { return }
+            self.fovoriteCardView.set(viewModel: FavoriteCardViewModel(recipe: self.viewModel.recipe!))
+        }
+    }
 }
 
 // MARK: - UILayout
 extension FavoritesViewController {
     
     private func addSubViews() {
+//        view.addSubview(fovoriteCardView)
+//        fovoriteCardView.centerInSuperview()
+//        fovoriteCardView.width(150)
     }
     
 
