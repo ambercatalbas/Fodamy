@@ -32,6 +32,9 @@
 "Home.recipeCommnetAndLikeCount" = "%@ Yorum %@ Beğeni";
 "Home.userRecipeAndFollowerCount" = "%@ Tarif %@ Takipçi";
 
+// MARK: - Favorites
+"Favorites.seeAllButtonTitle" = "TÜMÜNÜ GÖR";
+
 // MARK: RecipeDetail
 "RecipeDetail.noComment" = "Henüz yorum yapılmamıştır.";
 
