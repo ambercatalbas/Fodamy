@@ -103,6 +103,10 @@ extension RecipeDetailViewModel {
     func didSelectComment() {
         router.pushCommentList(recipeId: recipe.id, isKeyboardOpen: false)
     }
+    func resetData() {
+        commentCellItems.removeAll()
+        imageSliderCellItems.removeAll()
+    }
     
     func shareButtonTapped() {
         let title = recipe.title

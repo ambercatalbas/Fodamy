@@ -60,6 +60,8 @@ final class RecipeDetailViewController: BaseViewController<RecipeDetailViewModel
         .backgroundColor(.clear)
         .build()
     private let commentButton = ButtonFactory.createPrimaryButton(style: .large)
+    private var observer: NSObjectProtocol?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel.getRecipeComment()
@@ -70,17 +72,29 @@ final class RecipeDetailViewController: BaseViewController<RecipeDetailViewModel
         configureContents()
         subscribeViewModel()
         subscribeActions()
+        addObserver()
+
     }
     
     private func subscribeViewModel() {
         viewModel.reloadCommentData = { [weak self] in
+            self?.configureContents()
             self?.commentsCollectionView.reloadData()
         }
         
         viewModel.reloadDetailData = { [weak self] in
             self?.updateConfigureContents()
+            self?.configureContents()
+
         }
         
+    }
+    private func addObserver() {
+        observer = NotificationCenter.default.addObserver(forName: .reloadDetailView, object: nil, queue: nil, using: { [weak self] _ in
+            self?.viewModel.resetData()
+            self?.viewModel.getRecipeComment()
+            self?.viewModel.getRecipeDetail()
+        })
     }
 
 }

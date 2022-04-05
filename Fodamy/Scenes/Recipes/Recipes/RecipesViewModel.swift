@@ -28,7 +28,8 @@ final class RecipesViewModel: BaseViewModel<RecipesRouter>, RecipesViewProtocol 
     var isPagingEnabled = false
     var isRequestEnabled = false
     var recipesListingType: ListingType
-    
+    var title: String?
+
     func showRecipeDetailScreen(at indexPath: IndexPath) {
         let recipes = cellItems[indexPath.row]
         router.pushRecipeDetail(recipe: recipes.recipe)
@@ -57,6 +58,8 @@ extension RecipesViewModel {
             request = GetRecipeRequest(page: page, listingType: .editorChoiceRecipes)
         case .recentlyAddedRecipes:
             request = GetRecipeRequest(page: page, listingType: .recentlyAddedRecipes)
+        case .categoryRecipes(let categoryId):
+            request = GetRecipeRequest(page: page, listingType: .categoryRecipes(categoryId: categoryId))
         }
         self.isRequestEnabled = false
         if page == 1 { showActivityIndicatorView?() }

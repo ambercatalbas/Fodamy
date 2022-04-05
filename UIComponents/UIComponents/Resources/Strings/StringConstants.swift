@@ -43,6 +43,11 @@ public enum L10n {
     public static let refreshFromTop = L10n.tr("Localizable", "Error.refreshFromTop")
   }
 
+  public enum Favorites {
+    /// TÜMÜNÜ GÖR
+    public static let seeAllButtonTitle = L10n.tr("Localizable", "Favorites.seeAllButtonTitle")
+  }
+
   public enum General {
     /// Yorum Ekle
     public static let addComment = L10n.tr("Localizable", "General.addComment")
