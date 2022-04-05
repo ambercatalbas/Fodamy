@@ -7,6 +7,7 @@
 public enum ListingType {
     case editorChoiceRecipes
     case recentlyAddedRecipes
+    case categoryRecipes(categoryId: Int)
 }
 
 public struct GetRecipeRequest: APIDecodableResponseRequest {
@@ -28,6 +29,8 @@ public struct GetRecipeRequest: APIDecodableResponseRequest {
             path = "editor-choices"
         case .recentlyAddedRecipes:
             path = "recipe/"
+        case .categoryRecipes(let categoryId):
+            path = "category/\(categoryId)/recipe"
         }
     }
     
