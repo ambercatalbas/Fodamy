@@ -5,9 +5,9 @@
 
 1. Intro
 2. Auth
-    1. Register
-    2. Login
-    3. Forgot Password
+    - Register
+    - Login
+    - Forgot Password
 6. Main
 7. Liked
 8. Recipes List
@@ -16,12 +16,6 @@
 10. Recipe Comment
 11. Recipe Comment Edit
 
-1. First item
-2. Second item
-3. Third item
-    1. Indented item
-    2. Indented item
-4. Fourth item
 
 
 | Home Screen | Search Screen | Track Details Screen | Playlist Details Screen |
