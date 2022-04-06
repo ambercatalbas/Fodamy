@@ -5,9 +5,9 @@
 
 1. Intro
 2. Auth
-    - Register
-    - Login
-    - Forgot Password
+  - Register
+  - Login
+  - Forgot Password
 6. Main
 7. Liked
 8. Recipes List
