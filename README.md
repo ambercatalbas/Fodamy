@@ -1,20 +1,20 @@
 # Fodamy - Recipes App
 
 **It is an application where recipes are listed, likes and comments can be made and users can be followed.**
-##Screens
+## Screens
 
-1.Intro
-2.Auth
-3.Register
-4.Login
-5.Forgot Password
-6.Main
-7.Liked
-8.Recipes List
-9.Recipe Detail
--Images Preview
-10.Recipe Comment
-11.Recipe Comment Edit
+1. Intro
+2. Auth
+3. Register
+4. Login
+5. Forgot Password
+6. Main
+7. Liked
+8. Recipes List
+9. Recipe Detail
+ - Images Preview
+10. Recipe Comment
+11. Recipe Comment Edit
 
 
 | Home Screen | Search Screen | Track Details Screen | Playlist Details Screen |
