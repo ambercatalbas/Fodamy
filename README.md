@@ -20,10 +20,7 @@
 
 | Intro Screen | Register Screen | Login Screen | Forgot Password Screen |
 |:---------------:|:---------------:|:---------------:|:---------------:|
-|![Intro Screen](https://user-images.githubusercontent.com/79257297/161929153-13399fe8-6d77-4ec3-9899-1fa8f2f4ce20.png)|
-![Register Screeen](https://user-images.githubusercontent.com/79257297/161929076-fc32fe9d-6cda-4335-8d67-1cd2031d441e.png)|
-![Login Screen](https://user-images.githubusercontent.com/79257297/161929058-3319bff3-4125-4c90-829f-d8d8e868e5b7.png)|
-![forgot password](https://user-images.githubusercontent.com/79257297/161929080-15f1520a-bde9-44fe-9c3a-e8a8af9372f8.png)
+|![Intro Screen](https://user-images.githubusercontent.com/79257297/161929153-13399fe8-6d77-4ec3-9899-1fa8f2f4ce20.png)| ![Register Screeen](https://user-images.githubusercontent.com/79257297/161929076-fc32fe9d-6cda-4335-8d67-1cd2031d441e.png)| ![Login Screen](https://user-images.githubusercontent.com/79257297/161929058-3319bff3-4125-4c90-829f-d8d8e868e5b7.png)| ![forgot password](https://user-images.githubusercontent.com/79257297/161929080-15f1520a-bde9-44fe-9c3a-e8a8af9372f8.png)
 
 
 
