@@ -12,7 +12,7 @@
 7. Liked
 8. Recipes List
 9. Recipe Detail
- - Images Preview
+    - Images Preview
 10. Recipe Comment
 11. Recipe Comment Edit
 
