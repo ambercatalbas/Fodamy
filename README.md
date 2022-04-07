@@ -26,7 +26,29 @@
 |:---------------:|:---------------:|:---------------:|:---------------:|
 |![Main Screen](https://user-images.githubusercontent.com/79257297/162162132-5366e0ef-6a69-4f18-a55f-d3cb5c8bcd1f.png)|![Liked Screen](https://user-images.githubusercontent.com/79257297/162162152-8043b7ea-0ce9-46c2-9ef3-537dbc6fddda.png)|![Recipe Detail Screen](https://user-images.githubusercontent.com/79257297/162162172-406d966f-83c1-4b52-9c38-723dec7a5b00.png)|![CommentListScreen](https://user-images.githubusercontent.com/79257297/162167962-0c3a9571-48fc-4ab2-b3eb-626563da7980.png)
 
+<br> <br>
+<br> <br>
 
+## Concepts & Technologies Used
+ - Swift
+ - MVVM-R
+ - Consuming a REST API
+ - Caching
+ - Grand Central Dispatch
+ - Dependency Injection
+ - SOLID
+ - CocoaPods
+ - Modular Structure
+ - Design Patterns
+
+ **External Dependencies:**
+ - Alamofire
+ - TinyConstraints
+ - SwiftGen
+ - SwiftLint
+
+
+<br> <br>
 
 
 
