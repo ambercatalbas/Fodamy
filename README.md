@@ -32,10 +32,6 @@
 ## Concepts & Technologies Used
  - Swift
  - MVVM-R
- - Consuming a REST API
- - Caching
- - Grand Central Dispatch
- - Dependency Injection
  - SOLID
  - CocoaPods
  - Modular Structure
@@ -50,7 +46,7 @@
 
 <br> <br>
 
-
+*This project is made with reference to https://github.com/mobillium/iOS-Guidelines. This project is the final project of the Mobillium Zonzero Education Program.*
 
 
 
