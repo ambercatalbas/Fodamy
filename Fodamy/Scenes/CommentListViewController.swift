@@ -23,7 +23,6 @@ final class CommentListViewController: BaseViewController<CommentListViewModel> 
     
     private let commentInputView = CommentInputView()
     private let refreshControl = UIRefreshControl()
-    private var loadingFooterView: ActivityIndicatorFooterView?
     
     private var commentInputViewBottomConstraint: NSLayoutConstraint?
     var isKeyboardOpen = false
@@ -193,33 +192,6 @@ extension CommentListViewController: UICollectionViewDataSource {
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView,
-                        viewForSupplementaryElementOfKind kind: String,
-                        at indexPath: IndexPath) -> UICollectionReusableView {
-        let footer: ActivityIndicatorFooterView = collectionView.dequeueReusableCell(ofKind: kind, for: indexPath)
-        loadingFooterView = footer
-        return footer
-    }
-    
-    func collectionView(_ collectionView: UICollectionView,
-                        willDisplaySupplementaryView view: UICollectionReusableView,
-                        forElementKind elementKind: String,
-                        at indexPath: IndexPath) {
-
-        if elementKind == UICollectionView.elementKindSectionFooter {
-            self.loadingFooterView?.activityIndicator.startAnimating()
-        }
-    }
-
-    func collectionView(_ collectionView: UICollectionView,
-                        didEndDisplayingSupplementaryView view: UICollectionReusableView,
-                        forElementOfKind elementKind: String,
-                        at indexPath: IndexPath) {
-
-        if elementKind == UICollectionView.elementKindSectionFooter {
-            self.loadingFooterView?.activityIndicator.stopAnimating()
-        }
-    }
 }
 
 // swiftlint:disable line_length
