@@ -42,3 +42,4 @@ public extension UICollectionView {
     // swiftlint:enable fatal_error
     
 }
+
