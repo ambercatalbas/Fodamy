@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4E1850792816995100EA99AD /* DataProvider.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E1850782816995100EA99AD /* DataProvider.framework */; };
+		4E18507A2816995100EA99AD /* DataProvider.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4E1850782816995100EA99AD /* DataProvider.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4E60897027D9FAD20067AE80 /* Utilities.docc in Sources */ = {isa = PBXBuildFile; fileRef = 4E60896F27D9FAD20067AE80 /* Utilities.docc */; };
 		4E60897627D9FAD20067AE80 /* Utilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E60896B27D9FAD20067AE80 /* Utilities.framework */; };
 		4E60897B27D9FAD20067AE80 /* UtilitiesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E60897A27D9FAD20067AE80 /* UtilitiesTests.swift */; };
@@ -28,7 +30,22 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		4E18507B2816995100EA99AD /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				4E18507A2816995100EA99AD /* DataProvider.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		4E1850782816995100EA99AD /* DataProvider.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DataProvider.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E60896B27D9FAD20067AE80 /* Utilities.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Utilities.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E60896E27D9FAD20067AE80 /* Utilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Utilities.h; sourceTree = "<group>"; };
 		4E60896F27D9FAD20067AE80 /* Utilities.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = Utilities.docc; sourceTree = "<group>"; };
@@ -51,6 +68,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				89BA050C173C0942BA4C5FBE /* Pods_Utilities.framework in Frameworks */,
+				4E1850792816995100EA99AD /* DataProvider.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -125,6 +143,7 @@
 		96B6E2353B297D1076D91A63 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4E1850782816995100EA99AD /* DataProvider.framework */,
 				BF36A7F0E005E5BE57503AF0 /* Pods_Utilities.framework */,
 				F96FDA7C223729AE7E01D73B /* Pods_UtilitiesTests.framework */,
 			);
@@ -166,6 +185,7 @@
 				4E60896727D9FAD20067AE80 /* Sources */,
 				4E60896827D9FAD20067AE80 /* Frameworks */,
 				4E60896927D9FAD20067AE80 /* Resources */,
+				4E18507B2816995100EA99AD /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
